@@ -15,15 +15,15 @@ get_header(); ?>
 							// Getting data from Customizer to display the Slider section
 							// 4 == we want only 3 slides
 							for ( $i = 1; $i < 4; $i++ ) {
-								$slider_page[$i] = get_theme_mod( 'set_slider_page_' . $i );
-								$slider_button_text[$i] = get_theme_mod( 'set_slider_button_text_' . $i );
-								$slider_button_url[$i] = get_theme_mod( 'set_slider_button_url_' . $i );
+								$slider_page_[$i] = get_theme_mod( 'set_slider_page_' . $i );
+								$slider_button_text_[$i] = get_theme_mod( 'set_slider_button_text_' . $i );
+								$slider_button_url_[$i] = get_theme_mod( 'set_slider_button_url_' . $i );
 							}
 
 							$slider_loop = new WP_Query( array(
 								'post_type'				=> 'page',
 								'posts_per_page'	=> 3,
-								'post__in'				=> $slider_page, // page-id
+								'post__in'				=> $slider_page_, // page-id array(1, 2..)
 								'orderby'					=> 'post__in' // order by id
 							) );
 
@@ -39,7 +39,7 @@ get_header(); ?>
 											</div>
 											<div class="slider-description">
 												<div class="subtitle"><?php the_content(); ?></div>
-												<a class="link" href="<?php echo $slider_button_url[$j]; ?>"><?php echo $slider_button_text[$j]; ?></a>
+												<a class="link" href="<?php echo $slider_button_url_[$j]; ?>"><?php echo $slider_button_text_[$j]; ?></a>
 											</div>
 										</div>
 									</div>

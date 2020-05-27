@@ -40,7 +40,7 @@
       - `width`
       - `flex_height`
       - `flex_width`
-  -
+    - `add_image_size();`
 - Hooks
   - `wp_enqueue_scripts`
   - `after_setup_theme`
@@ -53,6 +53,15 @@
   - About
   - Blog
   - Contact
+  - WooCommerce pages
+    - Cart
+    - Checkout
+    - My account
+    - Shop
+  - Slider pages
+    - Up to 50% OFF This Week!
+    - Trendy Fashion Hats - 30% OFF
+    - Winter Warm-up Sale
 - Posts
   - Post 1 (cat: blog, lorem: 60)
   - Post 2 (cat: blog, lorem: 60)
@@ -186,6 +195,16 @@ add_theme_support( 'wc-product-gallery-slider' ); // show product gallery
 - Create the feature in `functions.php` file
 - Upload the logo using theme customize
 - Write logic in HTML
+- Edit CSS
+
+## Adding Slider to homepage
+
+- Enqueue slider files
+- Add HTML
+- Add image size function to `functions.php`
+- Create slider pages
+- Prepare fields in `customizer.php` file
+- Looping slider's slides and render in HTML
 - Edit CSS
 
 ## Import CSV Data

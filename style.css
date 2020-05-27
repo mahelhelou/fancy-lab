@@ -47,6 +47,10 @@ body {
 }
 
 /* Search Form */
+.search-form {
+  padding: 15px 0;
+}
+
 .search-form button {
   background-image: url('img/search.svg');
   height: 23px;
@@ -215,8 +219,10 @@ body {
 
 /* WooCommerce */
 
-/* Overriding woocommerce grid by using the same bootstrap grid */
-/* Grid System */
+/**
+* Grid system: Overriding woocommerce grid by using the same bootstrap grid
+* Made originally to edit checkout page, to avoid the issues of updating actions and hooks and even overriding theme templates
+*/
 .woocommerce .col2-set .col-1,
 .woocommerce .col2-set .col-2 {
   flex: 0 0 50%;

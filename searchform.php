@@ -17,6 +17,7 @@
   </button>
   <!-- Because we want to distribute the theme and we can use it without woocommerce plugin -->
   <?php
+    // Make search feature works for every theme, not for woocommerce only
     if ( class_exists( 'WooCommerce' ) ) { ?>
       <!-- Because it's woocommerce store, include only products in the search results -->
       <input type="hidden" value="product" name="post_type" id="post_type">

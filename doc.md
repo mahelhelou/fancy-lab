@@ -207,6 +207,24 @@ add_theme_support( 'wc-product-gallery-slider' ); // show product gallery
 - Looping slider's slides and render in HTML
 - Edit CSS
 
+## Add product list
+
+- The usage of `woocommerce shortcode` is good and save time
+- The only problem is with layout and design, but you can edit CSS to solve this problem
+- `Popular products`
+  - Use shortcode from woocommerce
+- `New Arrivals`
+  - Use shortcode from woocommerce
+- Use theme customizer to control
+  - Number of products to show
+  - Number of columns to show
+
+## Add Deal of The Week
+
+- Write HTML
+- Add the feature in customizer
+  - The user can enable/disable this feature/section
+
 ## Import CSV Data
 
 - [Topic link](https://docs.woocommerce.com/document/product-csv-importer-exporter/)

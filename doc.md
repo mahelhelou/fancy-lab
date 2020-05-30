@@ -225,6 +225,31 @@ add_theme_support( 'wc-product-gallery-slider' ); // show product gallery
 - Add the feature in customizer
   - The user can enable/disable this feature/section
 
+## Add blog posts in the `template-home.php`
+
+- Override default loop and write custom loop
+  - This is because we're writing a loop for posts in a page
+- Add support for `post-thumbnails`
+- Render the loop in HTML
+
+## Add blog posts in `index.php`
+
+- Render the post's content, image, meta..
+- Add pagination
+  - Use `Readings -> Posts per page`
+  - Use function to render pagination
+
+## Add single post
+
+- Add image, content, meta
+- Add link to pages to part of the content
+- Add comment template
+
+## Add 404 error page
+
+- Say sorry for nothing to show
+- Include a widget of latest blog posts
+
 ## Import CSV Data
 
 - [Topic link](https://docs.woocommerce.com/document/product-csv-importer-exporter/)

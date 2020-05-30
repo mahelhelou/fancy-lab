@@ -75,8 +75,15 @@ function fancy_lab_features() {
 		'flex_width'	=> true
 	) );
 
-	// Custom image size
+	// Add post thumbnail feature
+	add_theme_support( 'post-thumbnails' );
+
+	// Title tag support
+	add_theme_support( 'title-tag' );
+
+	// Custom image sizes
 	add_image_size( 'fancy-lab-slider', 1920, 800, array('center', 'center') );
+	add_image_size( 'fancy-lab-blog', 960, 640, array('center', 'center') );
 
 	// Set maximum width of images or products
 	if ( ! isset( $content_width ) ) {

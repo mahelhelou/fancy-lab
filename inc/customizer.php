@@ -212,6 +212,25 @@ function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in ob
     )
   );
 
+  // Field 1: Popular products title
+  $wp_customize->add_setting(
+    'set_popular_title', array(
+      'type' 				=> 'theme_mod',
+      'default' 			=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_popular_title', array(
+      'label' 		=> 'Popular Products Title',
+      'description' 	=> 'Popular Products Title',
+      'section' 		=> 'sec_home_page',
+      'type' 			=> 'text'
+    )
+  );
+
+  // Field 2: Popular products limit
   $wp_customize->add_setting(
     'set_popular_max_num', array(
       'type'					    => 'theme_mod',
@@ -229,6 +248,7 @@ function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in ob
     )
   );
 
+  // Field 3: Popular products columns
   $wp_customize->add_setting(
     'set_popular_max_col', array(
       'type'					    => 'theme_mod',
@@ -246,6 +266,25 @@ function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in ob
     )
   );
 
+  // Field 4: New arrivals title
+  $wp_customize->add_setting(
+    'set_new_arrivals_title', array(
+      'type' 				=> 'theme_mod',
+      'default' 			=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_new_arrivals_title', array(
+      'label' 		=> 'New Arrivals Title',
+      'description' 	=> 'New Arrivals Title',
+      'section' 		=> 'sec_home_page',
+      'type' 			=> 'text'
+    )
+  );
+
+  // Field 5: New arrivals limit
   $wp_customize->add_setting(
     'set_new_arrivals_max_num', array(
       'type'					    => 'theme_mod',
@@ -263,6 +302,7 @@ function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in ob
     )
   );
 
+  // Field 6: New arrivals columns
   $wp_customize->add_setting(
     'set_new_arrivals_max_col', array(
       'type'					    => 'theme_mod',
@@ -277,6 +317,24 @@ function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in ob
       'description'	=> 'New Arrivals Max Columns',
       'section'		  => 'sec_home_page',
       'type'			  => 'number'
+    )
+  );
+
+  // Field 7: Deal of the week title
+  $wp_customize->add_setting(
+    'set_deal_title', array(
+      'type' 				=> 'theme_mod',
+      'default' 			=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_deal_title', array(
+      'label' 		=> 'Deal of the Week Title',
+      'description' 	=> 'Deal of the Week Title',
+      'section' 		=> 'sec_home_page',
+      'type' 			=> 'text'
     )
   );
 
@@ -298,7 +356,7 @@ function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in ob
     )
   );
 
-  // Deal of the Week Product ID
+  // Field 9: Deal of the week product ID
   // You can view product-id by going to `Products -> Hover on any product`
   $wp_customize->add_setting(
     'set_deal', array(
@@ -314,6 +372,24 @@ function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in ob
       'description'	=> 'Product ID to Display',
       'section'		  => 'sec_home_page',
       'type'			  => 'number'
+    )
+  );
+
+  // Field 10: Blog title
+  $wp_customize->add_setting(
+    'set_blog_title', array(
+      'type' 				=> 'theme_mod',
+      'default' 			=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_blog_title', array(
+      'label' 		=> 'Blog Section Title',
+      'description' 	=> 'Blog Section Title',
+      'section' 		=> 'sec_home_page',
+      'type' 			=> 'text'
     )
   );
 }

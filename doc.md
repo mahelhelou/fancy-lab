@@ -278,6 +278,22 @@ add_theme_support( 'wc-product-gallery-slider' ); // show product gallery
     - Select language of translation
     - Click save button
 
+## Add Security to theme
+
+- `$title = '<script>alert('You have just hacked')</script>`
+  - if `echo $title;` -> script will be excuted as an alert
+  - if `echo esc_html( $title );` -> script wont excuted and it will render as a normal title (like <h1>)
+- `esc_html`
+- `esc_html_e`
+- `esc_html__`
+- `esc_url`
+- `esc_attr`
+- `esc_attr_e`
+
+## Theme Testing
+
+
+
 ## Import CSV Data
 
 - [Topic link](https://docs.woocommerce.com/document/product-csv-importer-exporter/)

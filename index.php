@@ -18,6 +18,7 @@ get_header();
 			<main>
 				<div class="container">
 					<div class="row">
+						<div class="col-12 col-md-8 col-lg-9">
 						<?php
 							// If there are any posts
 							if( have_posts() ):
@@ -28,13 +29,17 @@ get_header();
 								endwhile;
 								// We're using numeric page navigation here.
 								the_posts_pagination( array(
-									'prev_text'		=> 'Previous',
-									'next_text'		=> 'Next',
+									'prev_text'		=> __( 'Previous', 'fancy-lab' ),
+									'next_text'		=> __( 'Next', 'fancy-lab' ),
 								));
 							else:
 						?>
-							<p>Nothing to display.</p>
+							<p><?php _e( 'Nothing to display.', 'fancy-lab' ); ?></p>
 						<?php endif; ?>
+						</div>
+
+						<!-- Sidebar from sidebar.php -->
+						<?php get_sidebar(); ?>
 					</div>
 				</div>
 			</main>

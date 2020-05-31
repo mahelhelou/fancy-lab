@@ -65,7 +65,7 @@ get_header(); ?>
 				?>
 					<div class="container">
 						<div class="section-title">
-							<h2><?php echo get_theme_mod( 'set_popular_title', 'Popular products' ); ?></h2>
+							<h2><?php echo get_theme_mod( 'set_popular_title', __( 'Popular products', 'fancy-lab' ) ); ?></h2>
 						</div>
 						<?php echo do_shortcode( '[products limit=" ' . $popular_limit . ' " columns=" ' . $popular_col . ' " orderby="popularity"]' ); ?>
 					</div>
@@ -73,7 +73,7 @@ get_header(); ?>
 				<section class="new-arrivals">
 					<div class="container">
 						<div class="section-title">
-							<h2><?php echo get_theme_mod( 'set_new_arrivals_title', 'New Arrivals' ); ?></h2>
+							<h2><?php echo get_theme_mod( 'set_new_arrivals_title', __( 'New Arrivals', 'fancy-lab' ) ); ?></h2>
 						</div>
 						<?php echo do_shortcode( '[products limit=" ' . $arrivals_limit . ' " columns=" ' . $arrivals_col . ' " orderby="date"]' ); ?>
 					</div>
@@ -95,7 +95,7 @@ get_header(); ?>
 				<section class="deal-of-the-week">
 					<div class="container">
 						<div class="section-title">
-							<h2><?php echo get_theme_mod( 'set_deal_title', 'Deal of the Week' ); ?></h2>
+							<h2><?php echo get_theme_mod( 'set_deal_title', __( 'Deal of the Week', 'fancy-lab' ) ); ?></h2>
 						</div>
 						<div class="row d-flex align-items-center">
 							<div class="deal-img col-md-6 col-12 ml-auto text-center">
@@ -107,7 +107,7 @@ get_header(); ?>
 								<!-- The condition is to ensuare that no 100% discount! -->
 								<?php if ( !empty( $sale ) ): ?>
 									<span class="discount">
-										<?php echo $discount_percentage . '% OFF'; ?>
+										<?php echo $discount_percentage . __( '% OFF', 'fancy-lab' ); ?>
 									</span>
 								<?php endif; ?>
 								<h3><a href="<?php echo get_permalink( $deal ); ?>"><?php echo get_the_title( $deal ); ?></a></h3>
@@ -129,7 +129,7 @@ get_header(); ?>
 									<?php endif; ?>
 								</div>
 								<!-- Give the id of the item to be added to cart -->
-								<a href="<?php echo esc_url( '?add-to-cart=' . $deal ); ?>" class="add-to-cart">Add to Cart</a>
+								<a href="<?php echo esc_url( '?add-to-cart=' . $deal ); ?>" class="add-to-cart"><?php _e( 'Add to Cart', 'fancy-lab' ); ?></a>
 							</div>
 						</div>
 					</div>
@@ -139,7 +139,7 @@ get_header(); ?>
 				<section class="lab-blog">
 					<div class="container">
 						<div class="section-title">
-							<h2><?php echo get_theme_mod( 'set_blog_title', 'News From Our Blog' ); ?></h2>
+							<h2><?php echo get_theme_mod( 'set_blog_title', __( 'News From Our Blog', 'fancy-lab' ) ); ?></h2>
 						</div>
 						<div class="row">
 							<?php
@@ -167,7 +167,7 @@ get_header(); ?>
 									endwhile;
 									wp_reset_postdata();
 								else: ?>
-									<p>No content to show yet.</p>
+									<p><?php _e( 'Nothing to display.', 'fancy-lab' ); ?></p>
 							<?php endif; ?>
 						</div>
 					</div>

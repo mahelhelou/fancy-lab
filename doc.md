@@ -250,6 +250,34 @@ add_theme_support( 'wc-product-gallery-slider' ); // show product gallery
 - Say sorry for nothing to show
 - Include a widget of latest blog posts
 
+## Add sidebars
+
+- Write the code in `functions.php`
+- Make `sidebar.php` file and write the structure
+- Include `get_sidebar();` anywhere in the file
+- From admin area, drag widgets to the required sidebar
+
+## Add translation to the theme
+
+- You job is to make theme ready for translation, not to translate it!
+- Add support in `functions.php`
+- Start make translation ready in HTML pages
+  - `__('some content');` used for something won't appear in HTML
+  - `_e('some content');` used for any content will render in HTML
+- Use POEdit software
+  - Download these [files](https://github.com/fxbenard/Blank-WordPress-Pot)
+    - Rename `WordPress-Blank.pot` to `$your-text-domain.pot` and copy the file to `/languages/` directory
+    - Open file in POEdit
+    - Go to `Catalog -> Properties -> Rename the file and version`
+    - Click `Update from code` button
+    - Save the file
+    - Reload theme
+    - In case of problem, go to `File -> Compile to MO`
+  - Start translation
+    - `File -> New from POT/PO file`
+    - Select language of translation
+    - Click save button
+
 ## Import CSV Data
 
 - [Topic link](https://docs.woocommerce.com/document/product-csv-importer-exporter/)

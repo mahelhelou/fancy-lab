@@ -56,17 +56,17 @@
 												if ( is_user_logged_in() ) { ?>
 													<li>
 														<a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
-															class="nav-link">My Account</a>
+															class="nav-link"><?php _e( 'My Account', 'fancy-lab' ); ?></a>
 													</li>
 													<li>
 														<a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
-															class="nav-link">Logout</a>
+															class="nav-link"><?php _e( 'Logout', 'fancy-lab' ); ?></a>
 													</li>
 													<!-- To allow regsitration in My account page, go to WooCommerce -> Settings -> Accounts and privacy -> `Allow customers to create an account on the "My account" page` -->
 													<?php } else { ?>
 														<li>
 															<a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
-																class="nav-link">Login / Register</a>
+																class="nav-link"><?php _e( 'Login / Register', 'fancy-lab' ); ?></a>
 														</li>
 											<?php }
 											?>
@@ -88,7 +88,7 @@
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
                       data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" `
-                      aria-expanded="false" aria-label="Toggle navigation">
+                      aria-expanded="false" aria-label="<?php _e( 'Toggle navigation', 'fancy-lab' ); ?>">
                       <span class="navbar-toggler-icon"></span>
                     </button>
                     <!-- <a class="navbar-brand" href="#">Navbar</a> -->

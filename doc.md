@@ -63,14 +63,14 @@
     - Trendy Fashion Hats - 30% OFF
     - Winter Warm-up Sale
 - Posts
-  - Post 1 (cat: blog, lorem: 60)
-  - Post 2 (cat: blog, lorem: 60)
-  - Post 3 (cat: blog, lorem: 60)
+  - Post 1 - 10 (Cat: Blog, Lorem: 60 words)
 - Menus
   - MainMenu
     - [Home, About, Blog, Contact]
   - FooterMenu
     - [Home, About, Blog, Contact]
+  - WidgetMenu
+    - My account, Shop, Cart, Checkout
 
 ## Building features
 

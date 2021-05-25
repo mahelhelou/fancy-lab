@@ -1,11 +1,16 @@
-# Documentation
+# Documentation Reference
+
+1. Init pages in WooCommerce
+2. Import products
+3. Declare WooCommerce support
+4. Edit WooCommerce Templates
 
 ## Plugins
 
 - `Show current template` By `JOTAKI Taisuke`
 - `Simply Show Hooks` By `Stuart O'Brien, cxThemes`
 
-## List of function used in this theme
+## List of Function Used in This Theme
 
 - Attribute functions
   - `body_class();`
@@ -76,54 +81,6 @@
 
 1. Enqueue scripts
 2. Add theme support/features
-
-## Keep in your mind
-
-- Adding `WooCommerce` plugin doesn't mean that your theme is compatible with `WooCommerce`
-- Adding support of `woocommerce` to your theme will allow you to write reviews about the prodoct instead of regular wordpress comments (in the case of not declaring woocommerce support)
-
-## Declaring woocommerce support
-
-- Your new custom theme doesn't support full features of woocommerce yet
-
-  - Go to `WooCommerce -> Status -> WooCommerce support: Not declared` Not decalred means your theme isn't support woocommerce yet
-
-- in `functions.php` file, write this code
-
-```php
-add_theme_support( 'woocommerce' );
-// woocommerce stauts not is: woocommerce support (true sign)
-```
-
-- To specify the look of the products in the theme
-  - Control product image size
-  - Control number of products in `Shop` page
-    - You can see this from: `Appearance -> Customize -> WooCommerce -> Product catalog`
-
-```php
-// Supporting woocommerce
-add_theme_support( 'woocommerce', array(
-	'thumbnail_image_width' => 255,
-	'single_image_width'	=> 255,
-	'product_grid' 			=> array(
-    'default_rows'    => 10,
-    'min_rows'        => 5,
-    'max_rows'        => 10,
-    'default_columns' => 1,
-    'min_columns'     => 1, // by default is 4
-    'max_columns'     => 1,
-    )
-) );
-```
-
-- Specify the look and feel of product images
-
-```php
-// Adding look and feel for product images
-add_theme_support( 'wc-product-gallery-zoom' ); // zoom on hover
-add_theme_support( 'wc-product-gallery-lightbox' ); // open in lightbox
-add_theme_support( 'wc-product-gallery-slider' ); // show product gallery
-```
 
 ## Modifying woocommerce pages
 
@@ -291,13 +248,3 @@ add_theme_support( 'wc-product-gallery-slider' ); // show product gallery
 - `esc_attr_e`
 
 ## Theme Testing
-
-
-
-## Import CSV Data
-
-- [Topic link](https://docs.woocommerce.com/document/product-csv-importer-exporter/)
-- [Products CSV](https://github.com/woocommerce/woocommerce/tree/master/sample-data)
-- In WordPress dashboard, go to `Tools -> import -> Run importer`
-- Choose the CSV file and press continue
-- Click `Run importer`

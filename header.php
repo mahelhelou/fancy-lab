@@ -62,7 +62,7 @@
 														<a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
 															class="nav-link"><?php esc_html_e( 'Logout', 'fancy-lab' ); ?></a>
 													</li>
-													<!-- To allow regsitration in My account page, go to WooCommerce -> Settings -> Accounts and privacy -> `Allow customers to create an account on the "My account" page` -->
+													<!-- To allow registration in My account page, go to WooCommerce -> Settings -> Accounts and privacy -> `Allow customers to create an account on the "My account" page` -->
 													<?php } else { ?>
 														<li>
 															<a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
@@ -90,7 +90,7 @@
                       <span class="navbar-toggler-icon"></span>
                     </button>
                     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-                    <?php
+                  <?php
 									wp_nav_menu( array(
 											'theme_location'    => 'fancy_lab_main_menu',
 											'depth'             => 3, // (sub sub menu) Number of menu levels

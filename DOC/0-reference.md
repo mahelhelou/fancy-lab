@@ -7,9 +7,6 @@
 
 ## Plugins
 
-- `Show current template` By `JOTAKI Taisuke`
-- `Simply Show Hooks` By `Stuart O'Brien, cxThemes`
-
 ## List of Function Used in This Theme
 
 - Attribute functions
@@ -246,5 +243,3 @@
 - `esc_url`
 - `esc_attr`
 - `esc_attr_e`
-
-## Theme Testing

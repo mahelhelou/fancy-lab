@@ -1,0 +1,45 @@
+body {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  background-color: #f6f6f6;
+  padding: 5px 15px;
+  border: 1px solid #e2e2e2;
+  max-width: 100%;
+}
+
+a {
+  color: #d35758;
+}
+
+a:hover {
+  color: #af4142;
+  text-decoration: none;
+}
+
+p,
+ul li a,
+.nav-links a,
+.nav-links span {
+  font-size: 1.15rem;
+}
+
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  max-width: 100%;
+  height: auto;
+}

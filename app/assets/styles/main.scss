@@ -1,0 +1,22 @@
+// Libraries
+@import 'libs/bootstrap.min.scss';
+@import 'libs/flexslider.scss';
+
+
+// Base
+@import 'base/mixins';
+@import 'base/vars';
+@import 'base/globals';
+@import 'base/styles-reset';
+
+// Modules
+@import 'modules/content-area';
+@import 'modules/header';
+@import 'modules/wc-cart';
+@import 'modules/wc-grid';
+@import 'modules/wc-shop';
+@import 'modules/single-product';
+@import 'modules/wc-checkout';
+@import 'modules/blog';
+@import 'modules/home';
+@import 'modules/media-queries';

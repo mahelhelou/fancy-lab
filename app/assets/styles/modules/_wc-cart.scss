@@ -1,0 +1,22 @@
+.cart .cart-icon {
+  background: url('src/img/cart.svg');
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.cart .items {
+  background: #ca2424;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+}
+
+.woocommerce-cart table.cart td.actions .coupon .input-text {
+  width: 150px;
+}

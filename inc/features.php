@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 /**
@@ -6,9 +5,6 @@
  *
  * @package Fancy Lab
  */
-=======
-<?php // Fancy Lab Features
->>>>>>> 6f6bc2c528d81f015fb0a3aff2e8aaacb4fd13c0
 
 function fancy_lab_features() {
 	// 1. Register menus

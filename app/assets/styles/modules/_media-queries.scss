@@ -1,0 +1,116 @@
+@media all and (max-width: 768px) {
+
+  .woocommerce ul.products[class*='columns-'] li.product,
+  .woocommerce-page ul.products[class*='columns-'] li.product {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 767px) {
+
+  .woocommerce .col2-set .col-1,
+  .woocommerce .col2-set .col-2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .brand {
+    margin-bottom: 15px;
+  }
+
+  .main-menu {
+    border-top: 2px solid #f2f2f2;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .main-menu ul li {
+    margin: 0;
+  }
+
+  .main-menu .dropdown-menu {
+    display: block;
+    margin-left: 1rem;
+  }
+
+  .main-menu ul li .dropdown-menu .dropdown>a::before {
+    display: inline-block;
+    margin-right: 0.255em;
+    vertical-align: 0.255em;
+    content: '';
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+  }
+
+  .main-menu ul li .dropdown-menu .dropdown>a::after {
+    display: none;
+  }
+
+  .main-menu .dropdown-menu .dropdown-menu {
+    margin-left: 0;
+  }
+
+  .main-menu .dropdown-menu .dropdown-menu a {
+    padding-left: 1rem;
+  }
+
+  .main-menu ul li a,
+  .navbar-light .navbar-nav .nav-link {
+    padding: 10px 0;
+  }
+
+  .search input[type='search'] {
+    width: 75px;
+  }
+
+  .search-form input[type='search'] {
+    width: 45%;
+  }
+
+  .slider-details-container {
+    margin: 0 25px;
+    max-width: 400px;
+  }
+
+  .slider-title h3 {
+    font-size: 2em;
+  }
+
+  .slider-details-container .subtitle {
+    font-size: 1em;
+  }
+
+  .slider-details-container a {
+    padding: 0.5em;
+  }
+}
+
+@media all and (max-width: 575px) {
+  .slider-details-container {
+    max-width: 300px;
+  }
+
+  .slider-details-container a {
+    padding: 0.7em;
+    font-size: 1em;
+  }
+
+  .flexslider img {
+    height: 500px !important;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .woocommerce ul.products li.product a img {
+    width: 100%;
+  }
+}

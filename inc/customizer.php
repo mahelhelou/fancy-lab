@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Fancy Lab Theme Customizer
+ * Theme Customizer
  *
  * @package Fancy Lab
  */

@@ -27,7 +27,7 @@ body {
 /* Home Page Template */
 
 /* Header - Main Menu */
-body #page > header {
+body #page>header {
   border-top: 4px solid #ffeb33;
   background-color: #fdfdfd;
   border-bottom: 1px solid #eee;
@@ -50,7 +50,7 @@ header p.site-title {
   margin: 0;
 }
 
-header p.site-title ~ span {
+header p.site-title~span {
   color: #000;
 }
 
@@ -94,7 +94,7 @@ header .brand img {
   margin: 0;
 }
 
-.main-menu > ul li a,
+.main-menu>ul li a,
 .navbar-light .navbar-nav .nav-link {
   color: #303030;
   text-decoration: none;
@@ -118,7 +118,7 @@ header .brand img {
   color: #fff;
 }
 
-.main-menu .navbar-nav .active > .nav-link {
+.main-menu .navbar-nav .active>.nav-link {
   color: #ca2424;
 }
 
@@ -128,8 +128,8 @@ header .brand img {
   background-color: #272c33;
 }
 
-.main-menu .dropdown:hover > .dropdown-menu,
-.main-menu .dropup:hover > .dropdown-menu {
+.main-menu .dropdown:hover>.dropdown-menu,
+.main-menu .dropup:hover>.dropdown-menu {
   display: block;
 }
 
@@ -151,7 +151,7 @@ header .brand img {
   background-image: url('img/hamburger-menu.svg');
 }
 
-.main-menu ul li .dropdown-menu .dropdown > a::after {
+.main-menu ul li .dropdown-menu .dropdown>a::after {
   display: inline-block;
   margin-left: 0.355em;
   vertical-align: 0.2em;
@@ -180,7 +180,7 @@ header .brand img {
 
 /* Search Form */
 .search-form button {
-  background-image: url('img/search.svg');
+  background-image: url('images');
   height: 23px;
   width: 23px;
   background-repeat: no-repeat;
@@ -199,7 +199,7 @@ header .brand img {
 
 /* Cart */
 .cart .cart-icon {
-  background: url('img/cart.svg');
+  background: url('images/cart.svg');
   background-repeat: no-repeat;
   height: 25px;
   width: 25px;
@@ -607,7 +607,7 @@ header .brand img {
   background-color: #bd3759;
 }
 
-.product_meta > span {
+.product_meta>span {
   display: block;
 }
 
@@ -701,12 +701,15 @@ header .brand img {
 .woocommerce form .form-row {
   display: block;
 }
+
 .woocommerce-checkout #customer_details {
   margin-bottom: 20px;
 }
+
 .woocommerce table.shop_table {
   border-collapse: collapse;
 }
+
 .woocommerce table.shop_table thead {
   background-color: #d2335b;
   color: #fff;
@@ -913,8 +916,7 @@ li.comment {
   display: none;
 }
 
-.bypostauthor {
-}
+.bypostauthor {}
 
 .form-allowed-tags {
   background-color: #f5f5f5;
@@ -991,6 +993,7 @@ ul li a,
 /* Media Queries */
 
 @media all and (max-width: 768px) {
+
   .woocommerce ul.products[class*='columns-'] li.product,
   .woocommerce-page ul.products[class*='columns-'] li.product {
     width: 100%;
@@ -998,6 +1001,7 @@ ul li a,
 }
 
 @media all and (max-width: 767px) {
+
   .woocommerce .col2-set .col-1,
   .woocommerce .col2-set .col-2 {
     flex: 0 0 100%;
@@ -1023,7 +1027,7 @@ ul li a,
     margin-left: 1rem;
   }
 
-  .main-menu ul li .dropdown-menu .dropdown > a::before {
+  .main-menu ul li .dropdown-menu .dropdown>a::before {
     display: inline-block;
     margin-right: 0.255em;
     vertical-align: 0.255em;
@@ -1039,7 +1043,7 @@ ul li a,
     -o-transform: rotate(-90deg);
   }
 
-  .main-menu ul li .dropdown-menu .dropdown > a::after {
+  .main-menu ul li .dropdown-menu .dropdown>a::after {
     display: none;
   }
 

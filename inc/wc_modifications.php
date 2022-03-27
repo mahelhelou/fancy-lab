@@ -2,8 +2,6 @@
 /**
  * Template Overrides for WooCommerce pages
  *
- * @link https://docs.woocommerce.com/document/woocommerce-theme-developer-handbook/#section-3
- *
  * @package Fancy Lab
  */
 

@@ -114,9 +114,6 @@ get_header( 'shop' );
 		*/
 		do_action( 'woocommerce_sidebar' ); ?>
     </div>
-
-
-
     <!-- MY CODE -->
   </div>
 </div>

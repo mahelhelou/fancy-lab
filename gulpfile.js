@@ -29,12 +29,11 @@ function styles() {
 // Concat and manage scripts
 function scripts() {
 	const jsPath = {
-		jquery: 'app/assets/scripts/libs/jquery.min.js',
-		owl: 'app/assets/scripts/libs/owl.carousel.min.js',
 		bootstrap: 'app/assets/scripts/libs/bootstrap.min.js',
+		jqueryFlexslider: 'app/assets/scripts/libs/flexslider/jquery.flexslider-min.js',
+		flexslider: 'app/assets/scripts/libs/flexslider/flexslider.js',
 		app: 'app/assets/scripts/app.js'
 	}
-	// return src([jsPath.jquery, jsPath.popper, jsPath.owl, jsPath.bootstrap, jsPath.app], { sourcemaps: true })
 	return src(Object.values(jsPath), { sourcemaps: true })
 		.pipe(concat('bundled.js'))
 		.pipe(terser())

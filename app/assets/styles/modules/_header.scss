@@ -119,7 +119,7 @@ header .brand img {
 }
 
 .main-menu .navbar-toggler-icon {
-  background-image: url('img/hamburger-menu.svg');
+  background-image: url('../images/hamburger-menu.svg');
 }
 
 .main-menu ul li .dropdown-menu .dropdown>a::after {
@@ -151,7 +151,7 @@ header .brand img {
 
 /* Search Form */
 .search-form button {
-  background-image: url('src/img/search.svg');
+  background-image: url('../images/search.svg');
   height: 23px;
   width: 23px;
   background-repeat: no-repeat;

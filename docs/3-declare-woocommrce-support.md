@@ -6,7 +6,7 @@
 - Init WooCommerce support
 - Check if theme supports WooCommerce
 
-- In WordPress, adding `WooCommerce` plugin doesn't mean that your theme is compatible with `WooCommerce`.
+- In WordPress, adding `WooCommerce` plugin doesn't mean that your theme is compatible with `WooCommerce`!
 - Adding support of `WooCommerce` to your theme will allow you to write reviews about the products instead of regular wordpress comments (in the case of not declaring `WooCommerce` support)
 
 ## To Check if the Theme Supports WooCommerce

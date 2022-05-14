@@ -1,17 +1,4 @@
 <?php
-	/**
-	 * Customization & Documentation
-	 * My code starts from class '.container'
-	 * The page should be wrapped within a container
-	 * This method requires try and error, many times
-	 * The downside of this method is when the WooCommerce plugin is updated, the design and file functionality may change
-	 * But it's a well-documented method
-	 * WooCommerce will list changes made for the plugin temp files
-	 * Fortunately, the changes to temp files are rare
-	 */
-?>
-
-<?php
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
  *
@@ -33,9 +20,9 @@ defined( 'ABSPATH' ) || exit;
 get_header( 'shop' ); ?>
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-8 col-log-9 order-1 order-md-2">
-			<?php
+  <div class="row">
+    <div class="col-md-8 col-log-9 order-1 order-md-2">
+      <?php
 			/**
 			 * Hook: woocommerce_before_main_content.
 			 *
@@ -45,12 +32,12 @@ get_header( 'shop' ); ?>
 			 */
 			do_action( 'woocommerce_before_main_content' ); ?>
 
-			<header class="woocommerce-products-header">
-				<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-				<?php endif; ?>
+      <header class="woocommerce-products-header">
+        <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+        <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+        <?php endif; ?>
 
-				<?php
+        <?php
 				/**
 				 * Hook: woocommerce_archive_description.
 				 *
@@ -59,8 +46,8 @@ get_header( 'shop' ); ?>
 				 */
 				do_action( 'woocommerce_archive_description' );
 				?>
-			</header>
-			<?php
+      </header>
+      <?php
 			if ( woocommerce_product_loop() ) {
 
 				/**
@@ -111,9 +98,9 @@ get_header( 'shop' ); ?>
 			 */
 			do_action( 'woocommerce_after_main_content' ); ?>
 
-		</div>
-		<div class="col-md-4 col-lg-3 order-2 order-md-1">
-			<?php
+    </div>
+    <div class="col-md-4 col-lg-3 order-2 order-md-1">
+      <?php
 			/**
 			 * Hook: woocommerce_sidebar.
 			 *
@@ -121,10 +108,10 @@ get_header( 'shop' ); ?>
 			 */
 			do_action( 'woocommerce_sidebar' );
 			?>
-		</div>
+    </div>
 
-	<!-- Close .container & .row classes -->
-	</div><!-- row-end -->
+    <!-- Close .container & .row classes -->
+  </div><!-- row-end -->
 </div><!-- container-end -->
 
 <?php get_footer( 'shop' );

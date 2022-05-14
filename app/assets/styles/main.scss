@@ -10,11 +10,16 @@
 // Modules
 @import 'modules/content-area';
 @import 'modules/header';
-@import 'modules/wc-cart';
-@import 'modules/wc-grid';
-@import 'modules/wc-shop';
-@import 'modules/single-product';
-@import 'modules/wc-checkout';
+@import 'modules/slider';
 @import 'modules/blog';
 @import 'modules/home';
+@import 'modules/search';
+@import 'modules/footer';
 @import 'modules/media-queries';
+
+// WooCommerce styles
+@import 'wc-styles/wc-cart';
+@import 'wc-styles/wc-grid';
+@import 'wc-styles/wc-shop';
+@import 'wc-styles/wc-single-product';
+@import 'wc-styles/wc-checkout';

@@ -1,16 +1,15 @@
-# Documentation
+# Fancy Lab - WooCommerce Theme
 
-## Note
+This theme has been built while learning WooCommerce from a paid course in Udemy!
 
-```php
-// To submit theme to wordpress.org, you can't create a theme that's totally depending on another plugin
-// require get_theme_file_path( 'inc/wc_modifications.php' );
-/* if ( class_exists( 'WooCommerce' ) ) {
-	require get_theme_file_path( 'inc/wc_modifications.php' );
-} */
-```
+## What I Learned?
 
-## Get the Most of the Course
+- WooCommerce theme development.
+- WooCommerce custom template customization.
+- Configuring WooCommerce for the best results.
+- Read documentation and fix issues while developing a custom theme.
+
+## How to Get the Most of the Course?
 
 1. Read FAQs of the course.
 2. Read attached materials, links and resources.
@@ -20,20 +19,11 @@
 
 ## Tools and Resources
 
-### Web Tools
-
 - [Diff Checker](https://diffchecker.com/)
-
-### Useful Resources
-
 - [WordPress Security Tip - Change DB Tables Name](https://digwp.com/2010/10/change-database-prefix/)
 - [Video - Why to Change DB Table Prefix](https://www.youtube.com/watch?v=nUa7-OHdsxg&ab_channel=WordPressTutorials-WPLearningLab)
 
-### WP Plugins
+## Useful WordPress Plugins
 
 - `Show current template` By `JOTAKI Taisuke`
 - `Simply Show Hooks` By `Stuart O'Brien, cxThemes`
-
-## Notes
-
-- Change database table's prefix to improve security. You can check the link above to do this step before or after you install WordPress.

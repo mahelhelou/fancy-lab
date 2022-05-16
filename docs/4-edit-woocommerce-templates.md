@@ -17,7 +17,7 @@
 - Paste it in the root theme folder, in `WooCommerce` sub directory
 - Customize the template using HTML or add more PHP hooks
 
-> **Demo:** See `/woocommerce/archive-products.php` file.
+> **Demo:** See `/woocommerce/archive-product.php` file.
 
 ## Drawbacks of This Method
 
@@ -234,6 +234,8 @@ All the functionality in this pages comes from the shortcode `[woocommerce_cart]
 	max-width: 50%;
 }
 ```
+
 ## Modifying Account Page
+
 - Allow for at least 1 payment method from `WooCommerce -> Payments`.
-- 
+-

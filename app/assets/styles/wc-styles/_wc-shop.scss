@@ -113,33 +113,7 @@
   padding: 12px;
 }
 
-// Sidebar product categories
+// Sidebar product categoriesgulp
 .widget_product_categories {
   margin-top: 3rem;
-
-  .product-categories {
-    list-style: none;
-
-    .cat-item {
-      position: relative;
-
-      &:before {
-        content: '';
-        width: 1rem;
-        height: 1rem;
-        background: red;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 0;
-        margin-right: 1rem;
-
-
-      }
-
-      .children {
-        padding-left: 1.5rem;
-      }
-    }
-  }
 }

@@ -19,8 +19,9 @@
   <?php
     // Make search feature works for every theme, not for woocommerce only
     if ( class_exists( 'WooCommerce' ) ) { ?>
-      <!-- Because it's woocommerce store, include only products in the search results -->
-      <input type="hidden" value="product" name="post_type" id="post_type">
-    <?php }
+  <!-- Because it's woocommerce store, include only products in the search results -->
+  <!-- Before this, the template file was index.php, NOW the template file is archive-product.php -->
+  <input type="hidden" value="product" name="post_type" id="post_type">
+  <?php }
   ?>
 </form>

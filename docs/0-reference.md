@@ -100,7 +100,7 @@
 
 ## Modifying `archive-product.php`
 
-- Use overriding method by creating `woocommerce/archive-products.php` and manipulate the file (documented there)
+- Use overriding method by creating `woocommerce/archive-product.php` and manipulate the file (documented there)
 - Use `functions.php` file to edit, update or create actions and filters (documented there)
 
 ## Modifying `single-product.php` file

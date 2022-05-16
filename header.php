@@ -4,12 +4,6 @@
  *
  * @package Fancy Lab
  */
-
-/**
- * language_attributes() helps to type the current lang we use in the website
- * body_class() helps us to know what page we're in, and customize it if needed
- * We can add more classes for specific page(s) -> body_class( 'hell-class' )
- */
 ?>
 
 <!DOCTYPE html>

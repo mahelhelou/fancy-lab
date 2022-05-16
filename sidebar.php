@@ -7,7 +7,7 @@
 ?>
 
 <?php if( is_active_sidebar( 'fancy-lab-sidebar-1' ) ): ?>
-	<aside class="col-12 col-md-4 col-lg-3 bg-light h-100">
-		<?php dynamic_sidebar( 'fancy-lab-sidebar-1' ); ?>
-	</aside>
+<aside class="col-12 col-md-4 col-lg-3 bg-light h-100">
+  <?php dynamic_sidebar( 'fancy-lab-sidebar-1' ); ?>
+</aside>
 <?php endif;

@@ -7,18 +7,16 @@
  * and that other 'pages' on your WordPress site may use a
  * different template.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
  * @package Fancy Lab
  */
 
 get_header();
 ?>
-		<div class="content-area">
-			<main>
-				<div class="container">
-					<div class="row">
-						<?php
+<div class="content-area">
+  <main>
+    <div class="container">
+      <div class="row">
+        <?php
 							// If there are any posts
 							if( have_posts() ):
 
@@ -28,10 +26,11 @@ get_header();
 								endwhile;
 							else:
 						?>
-							<p>Nothing to display.</p>
-						<?php endif; ?>
-					</div>
-				</div>
-			</main>
-		</div>
+        <p>Nothing to display.</p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </main>
+</div>
+
 <?php get_footer(); ?>

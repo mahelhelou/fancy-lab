@@ -1,5 +1,8 @@
 # Fancy Lab - WooCommerce Theme
 
+## Notes
+1. Include `wc-modifications` on `class_exists` condition.
+
 This theme has been built while learning WooCommerce from a paid course in Udemy!
 
 ## What I Learned?

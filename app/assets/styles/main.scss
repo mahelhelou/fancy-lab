@@ -8,12 +8,14 @@
 @import 'base/globals';
 
 // Modules
-@import 'modules/content-area';
 @import 'modules/header';
-@import 'modules/slider';
-@import 'modules/blog';
-@import 'modules/home';
 @import 'modules/search';
+@import 'modules/cart';
+@import 'modules/slider';
+@import 'modules/content-area';
+@import 'modules/blog';
+@import 'modules/single-post';
+@import 'modules/home';
 @import 'modules/footer';
 @import 'modules/media-queries';
 

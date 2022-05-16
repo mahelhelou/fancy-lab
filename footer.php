@@ -8,8 +8,8 @@
  *
  * @package Fancy Lab
  */
-
 ?>
+
 <footer>
   <section class="footer-widgets">
     <div class="container">

@@ -14,12 +14,13 @@
 
 get_header();
 ?>
-		<div class="content-area">
-			<main>
-				<div class="container">
-					<div class="row">
-						<div class="col-12 col-md-8 col-lg-9">
-						<?php
+
+<div class="content-area">
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8 col-lg-9">
+          <?php
 							// If there are any posts
 							if( have_posts() ):
 
@@ -34,14 +35,15 @@ get_header();
 								));
 							else:
 						?>
-							<p><?php esc_html_e( 'Nothing to display.', 'fancy-lab' ); ?></p>
-						<?php endif; ?>
-						</div>
+          <p><?php esc_html_e( 'Nothing to display.', 'fancy-lab' ); ?></p>
+          <?php endif; ?>
+        </div>
 
-						<!-- Sidebar from sidebar.php -->
-						<?php get_sidebar(); ?>
-					</div>
-				</div>
-			</main>
-		</div>
+        <!-- Sidebar from sidebar.php -->
+        <?php get_sidebar(); ?>
+      </div>
+    </div>
+  </main>
+</div>
+
 <?php get_footer(); ?>

@@ -238,4 +238,149 @@ All the functionality in this pages comes from the shortcode `[woocommerce_cart]
 ## Modifying Account Page
 
 - Allow for at least 1 payment method from `WooCommerce -> Payments`.
--
+
+## Adding Shopping Cart
+
+### Showing the Cart in the Top Bar
+
+- Adding the shopping cart link.
+- Adding the shopping cart items count.
+
+```php
+<div class="cart text-right">
+  <a href="<?php echo esc_url( wc_get_cart_url() ); ?>">
+    <span class="cart-icon"></span>
+  </a>
+  <span class="items"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
+</div>
+```
+
+### Update Shopping Cart Without Refresh (Ajax)
+
+```php
+function fancy_lab_woocommerce_header_add_to_cart_fragment( $fragments ) {
+	global $woocommerce;
+
+	add_filter( 'woocommerce_add_to_cart_fragments', 'fancy_lab_woocommerce_header_add_to_cart_fragment' );
+
+	ob_start(); ?>
+
+  // The HTML tag we specified for shopping cart item
+  <span class="items"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+
+<?php
+	$fragments['span.items'] = ob_get_clean();
+	return $fragments;
+}
+```
+
+## Add Login/Logout in the Header
+
+- To allow registration in `My account page`, go to `WooCommerce -> Settings -> Accounts and privacy -> Allow customers to create an account on the "My account" page`
+
+```php
+<?php if ( class_exists( 'WooCommerce' ) ) { ?>
+<div class="account col-12">
+  <div class="navbar-expand">
+    <ul class="navbar-nav float-left">
+      <?php if ( is_user_logged_in() ) { ?>
+      <li>
+        <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
+          class="nav-link"><?php esc_html_e( 'My Account', 'fancy-lab' ); ?></a>
+      </li>
+      <li>
+        <a href="<?php echo esc_url( wp_logout_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) ); ?>"
+          class="nav-link"><?php esc_html_e( 'Logout', 'fancy-lab' ); ?></a>
+      </li>
+      <!-- To allow registration in My account page, go to WooCommerce -> Settings -> Accounts and privacy -> `Allow customers to create an account on the "My account" page` -->
+      <?php } else { ?>
+      <li>
+        <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
+          class="nav-link"><?php esc_html_e( 'Login / Register', 'fancy-lab' ); ?></a>
+      </li>
+      <?php } ?>
+    </ul>
+  </div>
+```
+
+## Add Custom Logo Feature in Customizer
+
+### Add Support for Custom Logo
+
+- The `flex_height` and `flex_width` properties are for flexible size logo, if you don't pass theme, the logo will be with the exact size you've specified.
+
+```php
+// Appears in: Appearance -> Customize -> Site identity
+add_theme_support( 'custom-logo', array(
+  'height'			=> 85,
+  'width'				=> 160,
+  'flex_height'	=> true,
+  'flex_width'	=> true
+) );
+```
+
+### Show the Logo of the Website
+
+```php
+<!-- Dynamic/custom logo feature -->
+<a href="<?php echo esc_url( home_url( '/' ) ); // or site_url() ?>">
+  <?php if ( has_custom_logo() ) {
+    the_custom_logo();
+  } else { ?>
+  <p><?php bloginfo( 'title' ); ?></p>
+  <span><?php bloginfo( 'description' ); ?></span>
+  <?php } ?>
+</a>
+```
+
+## Build Theme Customizer
+
+### Add Theme Copyright Section Support
+
+1. Create the section.
+2. Create the settings responsible to store values in DB, in `wp_options` table.
+3. Create fields for each section to store data.
+
+```php
+function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in object to add features to
+
+  // Add copyright section
+  $wp_customize->add_section(
+    'sec_copyright', array(
+			'title'		  	=> __( 'Copyright Settings', 'fancy-lab' ),
+			'description'	=> __( 'Copyright Section', 'fancy-lab' )
+		)
+  );
+
+  // Field 1, copyright text field
+  $wp_customize->add_setting(
+    'set_copyright', array(
+      'title'             => 'theme_mod',
+      'default'           => '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_copyright', array(
+      'label'			  => __( 'Copyright', 'fancy-lab' ),
+			'description'	=> __( 'Please, add your copyright information here', 'fancy-lab' ),
+      'section'     => 'sec_copyright', // The section to add control to
+      'type'        => 'text' // type of field (text, radio, ...)
+    )
+  );
+}
+
+add_action( 'customize_register', 'fancy_lab_customizer' );
+```
+
+### Show Theme Copyright Section Content
+
+- Pass default string/copyright if the customizer has no value!
+
+```php
+<div class="copyright-text col-12 col-md-6">
+  <p><?php echo esc_html ( get_theme_mod( 'set_copyright', __( 'Copyright X - All Rights Reserved', 'fancy-lab' ) ) ); ?>
+  </p>
+</div>
+```

@@ -6,6 +6,10 @@
  * @package Fancy Lab
  */
 
+/**
+ * Every customizer section needs a setting and a control.
+ * We can't add these to the `$wp_customize` object before it's ready so we'll add them in a separate function.
+ */
 function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in object to add features to
 
   // Add copyright section
@@ -16,7 +20,7 @@ function fancy_lab_customizer( $wp_customize ) { // $wp_customize is built-in ob
 		)
   );
 
-  // Field 1, copyright text box
+  // Field 1 - copyright text field
   $wp_customize->add_setting(
     'set_copyright', array(
       'title'             => 'theme_mod',

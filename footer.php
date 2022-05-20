@@ -14,19 +14,19 @@
   <section class="footer-widgets">
     <div class="container">
       <div class="row">
-        <?php if( is_active_sidebar( 'fancy-lab-sidebar-footer1' ) ): ?>
+        <?php if ( is_active_sidebar( 'fancy-lab-sidebar-footer1' ) ): ?>
         <div class="col-md-4 col-12">
           <?php dynamic_sidebar( 'fancy-lab-sidebar-footer1' ); ?>
         </div>
         <?php endif; ?>
 
-        <?php if( is_active_sidebar( 'fancy-lab-sidebar-footer2' ) ): ?>
+        <?php if ( is_active_sidebar( 'fancy-lab-sidebar-footer2' ) ): ?>
         <div class="col-md-4 col-12">
           <?php dynamic_sidebar( 'fancy-lab-sidebar-footer2' ); ?>
         </div>
         <?php endif; ?>
 
-        <?php if( is_active_sidebar( 'fancy-lab-sidebar-footer3' ) ): ?>
+        <?php if ( is_active_sidebar( 'fancy-lab-sidebar-footer3' ) ): ?>
         <div class="col-md-4 col-12">
           <?php dynamic_sidebar( 'fancy-lab-sidebar-footer3' ); ?>
         </div>
@@ -34,6 +34,7 @@
       </div>
     </div>
   </section>
+
   <section class="copyright">
     <div class="container">
       <div class="row">
@@ -42,22 +43,22 @@
             <?php echo esc_html ( get_theme_mod( 'set_copyright', __( 'Copyright X - All Rights Reserved', 'fancy-lab' ) ) ); ?>
           </p>
         </div>
-        </p>
       </div>
       <nav class="footer-menu col-12 col-md-6 text-left text-md-right">
         <?php
-								wp_nav_menu(
-									array(
-										'theme_location' 	=> 'fancy_lab_footer_menu'
-									)
-								);
-							?>
+          wp_nav_menu(
+            array(
+              'theme_location' 	=> 'fancy_lab_footer_menu'
+            )
+          );
+        ?>
       </nav>
     </div>
     </div>
   </section>
 </footer>
 </div>
+
 <?php wp_footer(); ?>
 </body>
 

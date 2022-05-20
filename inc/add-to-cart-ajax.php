@@ -9,13 +9,9 @@
 function fancy_lab_woocommerce_header_add_to_cart_fragment( $fragments ) {
 	global $woocommerce;
 
-	add_filter( 'woocommerce_add_to_cart_fragments', 'fancy_lab_woocommerce_header_add_to_cart_fragment' );
-
 	ob_start(); ?>
 
-<span class="items"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
-
-<!-- The HTML tag we specified for shopping cart item -->
+<!-- The HTML span that contents tht cart items count -->
 <span class="items"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
 
 <?php

@@ -1,6 +1,7 @@
 # Fancy Lab - WooCommerce Theme
 
 ## Notes
+
 1. Include `wc-modifications` on `class_exists` condition.
 
 This theme has been built while learning WooCommerce from a paid course in Udemy!
@@ -30,3 +31,16 @@ This theme has been built while learning WooCommerce from a paid course in Udemy
 
 - `Show current template` By `JOTAKI Taisuke`
 - `Simply Show Hooks` By `Stuart O'Brien, cxThemes`
+
+
+"": [
+        {
+          "id": 2095,
+          "key": "pa_color",
+          "value": "black"
+        },
+        {
+          "id": 2096,
+          "key": "size",
+          "value": "M Test"
+        }

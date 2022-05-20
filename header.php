@@ -32,8 +32,7 @@
             <div class="brand col-12 col-md-3 col-lg-2 text-center text-md-left">
               <!-- Dynamic/custom logo feature -->
               <a href="<?php echo esc_url( home_url( '/' ) ); // or site_url() ?>">
-                <?php
-                if ( has_custom_logo() ) {
+                <?php if ( has_custom_logo() ) {
                   the_custom_logo();
                 } else { ?>
                 <p><?php bloginfo( 'title' ); ?></p>
@@ -44,13 +43,11 @@
             </div>
             <div class="second-column col-12 col-md-9 col-lg-10">
               <div class="row">
-                <?php
-								if ( class_exists( 'WooCommerce' ) ) { ?>
+                <?php if ( class_exists( 'WooCommerce' ) ) { ?>
                 <div class="account col-12">
                   <div class="navbar-expand">
                     <ul class="navbar-nav float-left">
-                      <?php
-												if ( is_user_logged_in() ) { ?>
+                      <?php if ( is_user_logged_in() ) { ?>
                       <li>
                         <a href="<?php echo esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ); ?>"
                           class="nav-link"><?php esc_html_e( 'My Account', 'fancy-lab' ); ?></a>
@@ -69,6 +66,7 @@
 											?>
                     </ul>
                   </div>
+
                   <!-- Adding shopping cart to the website -->
                   <div class="cart text-right">
                     <a href="<?php echo esc_url( wc_get_cart_url() ); ?>"><span class="cart-icon"></span></a>

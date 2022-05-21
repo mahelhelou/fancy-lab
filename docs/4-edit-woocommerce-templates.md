@@ -247,6 +247,7 @@ All the functionality in this pages comes from the shortcode `[woocommerce_cart]
 - Adding the shopping cart items count.
 
 ```php
+<?php
 <div class="cart text-right">
   <a href="<?php echo esc_url( wc_get_cart_url() ); ?>">
     <span class="cart-icon"></span>
@@ -383,4 +384,467 @@ add_action( 'customize_register', 'fancy_lab_customizer' );
   <p><?php echo esc_html ( get_theme_mod( 'set_copyright', __( 'Copyright X - All Rights Reserved', 'fancy-lab' ) ) ); ?>
   </p>
 </div>
+```
+
+## Add Slider With Theme Customizer
+
+Because we want to distribute theme, we can't depend on third party plugins, as well as `Custom Post Types` and `Shortcodes`! So, we'll create dynamic slider with `Theme Customizer`.
+
+### Enqueue Flex Slider Scripts and Styles
+
+- Include the `flex slider` assets in the project
+
+### Create Separate Page for Every Slider
+
+- Add support of custom image size in `features.php`.
+- Write the content of the pages (Slides).
+- Upload a featured image for each slide.
+
+```php
+add_image_size( 'fancy-lab-slider', 1920, 800, array('center', 'center') );
+```
+
+### Adding Slider's Slides Dynamically Using Theme Customizer
+
+```php
+<?php
+function fancy_lab_customizer( $wp_customize ) {
+  // Slider Section
+	$wp_customize->add_section(
+		'sec_slider', array(
+			'title'			  => __( 'Slider Settings', 'fancy-lab' ),
+			'description'	=> __( 'Slider Section', 'fancy-lab' )
+		)
+	);
+
+  // Field 1 - Slider Page Number 1
+  $wp_customize->add_setting(
+    'set_slider_page_1', array(
+      'type'					      => 'theme_mod',
+      'default'			      	=> '',
+      'sanitize_callback'   => 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_page_1', array(
+      'label'			  => __( 'Set slider page 1', 'fancy-lab' ),
+      'description'	=> __( 'Set slider page 1', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'dropdown-pages'
+    )
+  );
+
+  // Field 2 - Slider Button Text Number 1
+  $wp_customize->add_setting(
+    'set_slider_button_text_1', array(
+      'type'					      => 'theme_mod',
+      'default'				      => '',
+      'sanitize_callback'		=> 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_button_text_1', array(
+      'label'			  => __( 'Button Text for Page 1', 'fancy-lab' ),
+      'description'	=> __( 'Button Text for Page 1', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'text'
+    )
+  );
+
+  // Field 3 - Slider Button URL Number 1
+  $wp_customize->add_setting(
+    'set_slider_button_url_1', array(
+      'type'					      => 'theme_mod',
+      'default'				      => '',
+      'sanitize_callback'		=> 'esc_url_raw'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_button_url_1', array(
+      'label'			  => __( 'URL for Page 1', 'fancy-lab' ),
+      'description'	=> __( 'URL for Page 1', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'url'
+    )
+  );
+
+  // Field 4 - Slider Page Number 2
+  $wp_customize->add_setting(
+    'set_slider_page_2', array(
+      'type'					      => 'theme_mod',
+      'default'				      => '',
+      'sanitize_callback'		=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_page_2', array(
+      'label'			  => __( 'Set slider page 2', 'fancy-lab' ),
+      'description'	=> __( 'Set slider page 2', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'dropdown-pages'
+    )
+  );
+
+  // Field 5 - Slider Button Text Number 2
+  $wp_customize->add_setting(
+    'set_slider_button_text_2', array(
+      'type'					      => 'theme_mod',
+      'default'				      => '',
+      'sanitize_callback'		=> 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_button_text_2', array(
+      'label'			  => __( 'Button Text for Page 2', 'fancy-lab' ),
+      'description'	=> __( 'Button Text for Page 2', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'text'
+    )
+  );
+
+  // Field 6 - Slider Button URL Number 2
+  $wp_customize->add_setting(
+    'set_slider_button_url_2', array(
+      'type'					      => 'theme_mod',
+      'default'				      => '',
+      'sanitize_callback'		=> 'esc_url_raw'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_button_url_2', array(
+      'label'			  => __( 'URL for Page 2', 'fancy-lab' ),
+      'description'	=> __( 'URL for Page 2', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'url'
+    )
+  );
+
+  // Field 7 - Slider Page Number 3
+  $wp_customize->add_setting(
+    'set_slider_page_3', array(
+      'type'					      => 'theme_mod',
+      'default'				      => '',
+      'sanitize_callback'		=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_page_3', array(
+      'label'			  => __( 'Set slider page 3', 'fancy-lab' ),
+      'description'	=> __( 'Set slider page 3', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'dropdown-pages'
+    )
+  );
+
+  // Field 8 - Slider Button Text Number 3
+  $wp_customize->add_setting(
+    'set_slider_button_text_3', array(
+      'type'					      => 'theme_mod',
+      'default'				      => '',
+      'sanitize_callback'		=> 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_button_text_3', array(
+      'label'			  => __( 'Button Text for Page 3', 'fancy-lab' ),
+      'description'	=> __( 'Button Text for Page 3', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'text'
+    )
+  );
+
+  // Field 9 - Slider Button URL Number 3
+  $wp_customize->add_setting(
+    'set_slider_button_url_3', array(
+      'type'					      => 'theme_mod',
+      'default'				      => '',
+      'sanitize_callback'		=> 'esc_url_raw'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_slider_button_url_3', array(
+      'label'			  => __( 'URL for Page 3', 'fancy-lab' ),
+      'description'	=> __( 'URL for Page 3', 'fancy-lab' ),
+      'section'		  => 'sec_slider',
+      'type'			  => 'url'
+    )
+  );
+
+  // Homepage Settings
+  $wp_customize->add_section(
+    'sec_home_page', array(
+      'title'			  => __( 'Home Page Products and Blog Settings', 'fancy-lab' ),
+      'description'	=> __( 'Home Page Section', 'fancy-lab' )
+    )
+  );
+
+  // Field 1: Popular products title
+  $wp_customize->add_setting(
+    'set_popular_title', array(
+      'type' 			      	=> 'theme_mod',
+      'default' 		    	=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_popular_title', array(
+      'label' 		  => __( 'Popular Products Title', 'fancy-lab' ),
+      'description' => __( 'Popular Products Title', 'fancy-lab' ),
+      'section' 		=> 'sec_home_page',
+      'type' 			  => 'text'
+    )
+  );
+
+  // Field 2: Popular products limit
+  $wp_customize->add_setting(
+    'set_popular_max_num', array(
+      'type'					    => 'theme_mod',
+      'default'			    	=> '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_popular_max_num', array(
+      'label'			  => __( 'Popular Products Max Number', 'fancy-lab' ),
+      'description'	=> __( 'Popular Products Max Number', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+
+  // Field 3: Popular products columns
+  $wp_customize->add_setting(
+    'set_popular_max_col', array(
+      'type'					    => 'theme_mod',
+      'default'				    => '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_popular_max_col', array(
+      'label'			  => __( 'Popular Products Max Columns', 'fancy-lab' ),
+      'description'	=> __( 'Popular Products Max Columns', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+
+  // Field 4: New arrivals title
+  $wp_customize->add_setting(
+    'set_new_arrivals_title', array(
+      'type' 			      	=> 'theme_mod',
+      'default' 		    	=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_new_arrivals_title', array(
+      'label' 	   	=> __( 'New Arrivals Title', 'fancy-lab' ),
+      'description' => __( 'New Arrivals Title', 'fancy-lab' ),
+      'section' 		=> 'sec_home_page',
+      'type' 			  => 'text'
+    )
+  );
+
+  // Field 5: New arrivals limit
+  $wp_customize->add_setting(
+    'set_new_arrivals_max_num', array(
+      'type'					    => 'theme_mod',
+      'default'			    	=> '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_new_arrivals_max_num', array(
+      'label'		  	=> __( 'New Arrivals Max Number', 'fancy-lab' ),
+      'description'	=> __( 'New Arrivals Max Number', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+
+  // Field 6: New arrivals columns
+  $wp_customize->add_setting(
+    'set_new_arrivals_max_col', array(
+      'type'					    => 'theme_mod',
+      'default'				    => '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_new_arrivals_max_col', array(
+      'label'			  => __( 'New Arrivals Max Columns', 'fancy-lab' ),
+      'description'	=> __( 'New Arrivals Max Columns', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+
+  // Field 7: Deal of the week title
+  $wp_customize->add_setting(
+    'set_deal_title', array(
+      'type' 			      	=> 'theme_mod',
+      'default' 	    		=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_deal_title', array(
+      'label' 		  => __( 'Deal of the Week Title', 'fancy-lab' ),
+      'description' => __( 'Deal of the Week Title', 'fancy-lab' ),
+      'section' 		=> 'sec_home_page',
+      'type' 			  => 'text'
+    )
+  );
+
+  // Deal of the Week Checkbox
+  // No native function to santiize checkbox, so create if yourself
+  $wp_customize->add_setting(
+    'set_deal_show', array(
+      'type'					    => 'theme_mod',
+      'default'			    	=> '',
+      'sanitize_callback'	=> 'fancy_lab_sanitize_checkbox'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_deal_show', array(
+      'label'			=> __( 'Show Deal of the Week?', 'fancy-lab' ),
+      'section'		=> 'sec_home_page',
+      'type'			=> 'checkbox'
+    )
+  );
+
+  // Field 9: Deal of the week product ID
+  // You can view product-id by going to `Products -> Hover on any product`
+  $wp_customize->add_setting(
+    'set_deal', array(
+      'type'			    		=> 'theme_mod',
+      'default'		    		=> '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_deal', array(
+      'label'			  => __( 'Deal of the Week Product ID', 'fancy-lab' ),
+      'description'	=> __( 'Product ID to Display', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+
+  // Field 10: Blog title
+  $wp_customize->add_setting(
+    'set_blog_title', array(
+      'type' 			    	  => 'theme_mod',
+      'default' 		    	=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_blog_title', array(
+      'label' 		  => __( 'Blog Section Title', 'fancy-lab' ),
+      'description' => __( 'Blog Section Title', 'fancy-lab' ),
+      'section' 		=> 'sec_home_page',
+      'type' 			  => 'text'
+    )
+  );
+}
+
+add_action( 'customize_register', 'fancy_lab_customizer' );
+
+// Sanitize checkbox function
+function fancy_lab_sanitize_checkbox( $checked ) {
+	return ( ( isset ( $checked ) && $checked == true ) ? true : false );
+}
+```
+
+### Show the Slider in the Home Page
+
+- Getting data from Customizer to display the Slider section.
+- 4 `->` we want only 3 slides
+
+```php
+<ul class="slides">
+  <?php
+    /**
+     * Getting data from Customizer to display the Slider section
+     * 4 == we want only 3 slides
+     * We started from 1 because our options in Customizer starts from 1
+     */
+    for ( $i = 1; $i < 4; $i++ ) {
+      $slider_page_[$i] = get_theme_mod( 'set_slider_page_' . $i );
+      $slider_button_text_[$i] = get_theme_mod( 'set_slider_button_text_' . $i );
+      $slider_button_url_[$i] = get_theme_mod( 'set_slider_button_url_' . $i );
+    }
+
+    $args = [
+      'post_type'				=> 'page',
+      'posts_per_page'	=> 3,
+      'post__in'				=> $slider_page_, // page-id array(1, 2..)
+      'orderby'					=> 'post__in' // order by id
+    ];
+
+    $slides = new WP_Query( $args );
+
+    $j = 1;
+    while ( $slides->have_posts() ) {
+      $slides->the_post(); ?>
+  <li>
+    <?php the_post_thumbnail( 'fancy-lab-slider', array( 'class'	=> 'img-fluid' ) ); ?>
+    <div class="container">
+      <div class="slider-details-container">
+        <div class="slider-title">
+          <h1><?php the_title(); ?></h1>
+        </div>
+        <div class="slider-description">
+          <div class="subtitle"><?php the_content(); ?></div>
+          <a class="link"
+            href="<?php echo esc_url( $slider_button_url_[$j] ); ?>"><?php echo esc_html( $slider_button_text_[$j] ); ?></a>
+        </div>
+      </div>
+    </div>
+  </li>
+  <?php
+    $j++;
+    }
+      wp_reset_postdata();
+    ?>
+</ul>
+```
+
+## Popular Products
+
+- Most of functionality in `WooCommerc` can be done through shortcode, `prodocuts` can be one of them!
+
+### Basic Product List
+
+- This method of echoing `shortcode` will be static and the user has no control over the options.
+- The product list will have description in the `Home` page, which is illogic! Use `CSS` to hide the product description.
+
+```php
+// Static query to get dynamic popular products
+echo do_shortcode( '[products limit="4" columns="4" orderby="popularity"]' );
+```
+
+```php
+
 ```

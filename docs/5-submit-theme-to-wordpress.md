@@ -7,3 +7,5 @@
 	require get_theme_file_path( 'inc/wc-modifications.php' );
 } */
 ```
+
+Because we want to distribute theme, we can't depend on third party plugins, as well as `Custom Post Types` and `Shortcodes`! So, we'll create dynamic slider with `Theme Customizer`.

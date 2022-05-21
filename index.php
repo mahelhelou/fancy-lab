@@ -20,14 +20,11 @@ get_header();
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-8 col-lg-9">
-          <?php
-							// If there are any posts
-							if( have_posts() ):
-
-								// Load posts loop
+          <?php if ( have_posts() ):
 								while( have_posts() ): the_post();
 									get_template_part( 'template-parts/content' );
 								endwhile;
+
 								// We're using numeric page navigation here.
 								the_posts_pagination( array(
 									'prev_text'		=> esc_html__( 'Previous', 'fancy-lab' ),

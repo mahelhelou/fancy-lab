@@ -407,7 +407,6 @@ add_image_size( 'fancy-lab-slider', 1920, 800, array('center', 'center') );
 ### Adding Slider's Slides Dynamically Using Theme Customizer
 
 ```php
-<?php
 function fancy_lab_customizer( $wp_customize ) {
   // Slider Section
 	$wp_customize->add_section(
@@ -833,18 +832,323 @@ function fancy_lab_sanitize_checkbox( $checked ) {
 
 ## Popular Products
 
-- Most of functionality in `WooCommerc` can be done through shortcode, `prodocuts` can be one of them!
+- Most of functionality in `WooCommerc` can be done through `shortcode`, `products` can be one of them!
 
-### Basic Product List
+### Static Product List
 
-- This method of echoing `shortcode` will be static and the user has no control over the options.
+- This method of echoing `shortcode` will be print the products in a s static way, the user has no control over the options of number of products.
 - The product list will have description in the `Home` page, which is illogic! Use `CSS` to hide the product description.
+- You can use `hooks` to show the product description only in the `Shop` page.
 
 ```php
 // Static query to get dynamic popular products
 echo do_shortcode( '[products limit="4" columns="4" orderby="popularity"]' );
 ```
 
-```php
+### Hiding the Product Description in the Home Page Using CSS
 
+```css
+.home .woocommerce-loop-product__title + p {
+	display: none;
+}
 ```
+
+### Hiding the Product Description in the Home Page Using CSS
+
+In `wc-modifications.php`, print the product description only in the `Shop` page.
+
+```php
+// 5. If we in Shop page, add a short description to the product
+add_action( 'woocommerce_after_shop_loop_item_title', 'the_excerpt', 1 );
+```
+
+### Allow the User to Have Some Control Over Product List
+
+- Register options in the theme customizer:
+
+```php
+function fancy_lab_customizer( $wp_customize ) {
+  // Homepage Settings
+  $wp_customize->add_section(
+    'sec_home_page', array(
+      'title'			  => __( 'Home Page Products and Blog Settings', 'fancy-lab' ),
+      'description'	=> __( 'Home Page Section', 'fancy-lab' )
+    )
+  );
+
+  // Field 1: Popular products title
+  $wp_customize->add_setting(
+    'set_popular_title', array(
+      'type' 			      	=> 'theme_mod',
+      'default' 		    	=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_popular_title', array(
+      'label' 		  => __( 'Popular Products Title', 'fancy-lab' ),
+      'description' => __( 'Popular Products Title', 'fancy-lab' ),
+      'section' 		=> 'sec_home_page',
+      'type' 			  => 'text'
+    )
+  );
+
+  // Field 2: Popular products limit
+  $wp_customize->add_setting(
+    'set_popular_max_num', array(
+      'type'					    => 'theme_mod',
+      'default'			    	=> '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_popular_max_num', array(
+      'label'			  => __( 'Popular Products Max Number', 'fancy-lab' ),
+      'description'	=> __( 'Popular Products Max Number', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+
+  // Field 3: Popular products columns
+  $wp_customize->add_setting(
+    'set_popular_max_col', array(
+      'type'					    => 'theme_mod',
+      'default'				    => '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_popular_max_col', array(
+      'label'			  => __( 'Popular Products Max Columns', 'fancy-lab' ),
+      'description'	=> __( 'Popular Products Max Columns', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+
+  // Field 4: New arrivals title
+  $wp_customize->add_setting(
+    'set_new_arrivals_title', array(
+      'type' 			      	=> 'theme_mod',
+      'default' 		    	=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_new_arrivals_title', array(
+      'label' 	   	=> __( 'New Arrivals Title', 'fancy-lab' ),
+      'description' => __( 'New Arrivals Title', 'fancy-lab' ),
+      'section' 		=> 'sec_home_page',
+      'type' 			  => 'text'
+    )
+  );
+
+  // Field 5: New arrivals limit
+  $wp_customize->add_setting(
+    'set_new_arrivals_max_num', array(
+      'type'					    => 'theme_mod',
+      'default'			    	=> '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_new_arrivals_max_num', array(
+      'label'		  	=> __( 'New Arrivals Max Number', 'fancy-lab' ),
+      'description'	=> __( 'New Arrivals Max Number', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+
+  // Field 6: New arrivals columns
+  $wp_customize->add_setting(
+    'set_new_arrivals_max_col', array(
+      'type'					    => 'theme_mod',
+      'default'				    => '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_new_arrivals_max_col', array(
+      'label'			  => __( 'New Arrivals Max Columns', 'fancy-lab' ),
+      'description'	=> __( 'New Arrivals Max Columns', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+}
+```
+
+- Show the options in the front end:
+
+```php
+$popular_limit	= get_theme_mod( 'set_popular_max_num', 4 );
+$popular_col 		= get_theme_mod( 'set_popular_max_col', 4 );
+$arrivals_limit	= get_theme_mod( 'set_new_arrivals_max_num', 4 );
+$arrivals_col		= get_theme_mod( 'set_new_arrivals_max_col', 4 );
+
+<h2><?php echo esc_html( get_theme_mod( 'set_popular_title', __( 'Popular products', 'fancy-lab' ) ) ); ?></h2>
+
+<h2><?php echo esc_html( get_theme_mod( 'set_new_arrivals_title', __( 'New Arrivals', 'fancy-lab' ) ) ); ?></h2>
+
+// Dynamic query to get popular products
+echo do_shortcode( '[products limit=" ' . esc_attr( $popular_limit ) . ' " columns=" ' . esc_attr( $popular_col ) . ' " orderby="popularity"]' );
+
+// Dynamic query to get new arrivals products
+echo do_shortcode( '[products limit=" ' . esc_attr( $arrivals_limit ) . ' " columns=" ' . esc_attr( $arrivals_col ) . ' " orderby="date"]' );
+```
+
+## Deal of the Week Feature
+
+- This feature/module will be optional in customizer, the user can enable/disable it using checkbox.
+- `0`: By default this section is false/disabled.
+- The module will have a `status`, which can be active or not active.
+
+### Register Options in Theme Customizer
+
+````php
+function fancy_lab_customizer( $wp_customize ) {
+  // Field 7: Deal of the week title
+  $wp_customize->add_setting(
+    'set_deal_title', array(
+      'type' 			      	=> 'theme_mod',
+      'default' 	    		=> '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_deal_title', array(
+      'label' 		  => __( 'Deal of the Week Title', 'fancy-lab' ),
+      'description' => __( 'Deal of the Week Title', 'fancy-lab' ),
+      'section' 		=> 'sec_home_page',
+      'type' 			  => 'text'
+    )
+  );
+
+  // Deal of the Week Checkbox
+  // No native function to santiize checkbox, so create if yourself
+  $wp_customize->add_setting(
+    'set_deal_show', array(
+      'type'					    => 'theme_mod',
+      'default'			    	=> '',
+      'sanitize_callback'	=> 'fancy_lab_sanitize_checkbox'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_deal_show', array(
+      'label'			=> __( 'Show Deal of the Week?', 'fancy-lab' ),
+      'section'		=> 'sec_home_page',
+      'type'			=> 'checkbox'
+    )
+  );
+
+  // Field 9: Deal of the week product ID
+  // You can view product-id by going to `Products -> Hover on any product`
+  $wp_customize->add_setting(
+    'set_deal', array(
+      'type'			    		=> 'theme_mod',
+      'default'		    		=> '',
+      'sanitize_callback'	=> 'absint'
+    )
+  );
+
+  $wp_customize->add_control(
+    'set_deal', array(
+      'label'			  => __( 'Deal of the Week Product ID', 'fancy-lab' ),
+      'description'	=> __( 'Product ID to Display', 'fancy-lab' ),
+      'section'		  => 'sec_home_page',
+      'type'			  => 'number'
+    )
+  );
+}
+
+add_action( 'customize_register', 'fancy_lab_customizer' );
+
+// Sanitize checkbox function
+function fancy_lab_sanitize_checkbox( $checked ) {
+	return ( ( isset ( $checked ) && $checked == true ) ? true : false );
+}
+``
+
+```php
+/**
+ * This option will be optional in customizer, the user can enable/disable it using checkbox
+ * 0: by default this section is false/disabled
+ */
+$showDeal       = get_theme_mod( 'set_deal_show', 0 ); // status
+$dealProductId  = get_theme_mod( 'set_deal' ); // product-id
+$currency       = get_woocommerce_currency_symbol(); // woocom settings
+// get_post_meta(id, DB_field_name, isRenderedToScreen?)
+$regular	= get_post_meta( $dealProductId, '_regular_price', true );
+$sale 		= get_post_meta( $dealProductId, '_sale_price', true );
+
+if ( $showDeal == 1 && ( !empty( $dealProductId ) ) ):
+  // Simple equation to calculate discount percentage
+  $discount       = absint( 100 - ( ( $sale / $regular ) * 100 ) );
+  $discount_rate  = '%' . $discount;
+  ?>
+<!-- Deal of the week -->
+<section class="deal-of-the-week">
+<div class="container">
+  <div class="section-title">
+    <h2><?php echo esc_html( get_theme_mod( 'set_deal_title', __( 'Deal of the Week', 'fancy-lab' ) ) ); ?></h2>
+  </div>
+  <div class="row d-flex align-items-center">
+    <div class="deal-img col-md-6 col-12 ml-auto text-center">
+      <?php
+      /**
+       * Because we are outside the loop and we don't know the post-id, we use (echo get_the_post_thumbnail( $id, $img-size, $extras ))
+       * You have to choose a $dealProductId or post-id in customizer to show the image
+       */
+      echo get_the_post_thumbnail( $dealProductId, 'large', array( 'class' => 'img-fluid' ) ); ?>
+    </div>
+    <div class="deal-desc col-md-4 col-12 mr-auto text-center">
+
+      <?php
+      // The condition is to ensuare that no 100% discount!
+      if ( !empty( $sale ) ): ?>
+      <span class="discount">
+        <?php echo esc_html( $discount_rate ) . esc_html__( ' OFF', 'fancy-lab' ); ?>
+      </span>
+      <?php endif; ?>
+      <h3>
+        <a
+          href="<?php echo esc_url( get_permalink( $dealProductId ) ); ?>"><?php echo esc_html( get_the_title( $dealProductId ) ); ?></a>
+      </h3>
+      <p><?php echo esc_html( get_the_excerpt( $dealProductId ) ); ?></p>
+      <div class="prices">
+        <span class="regular">
+          <?php
+            echo esc_html( $currency );
+            echo esc_html( $regular );
+          ?>
+        </span>
+        <?php if ( !empty( $sale ) ): ?>
+        <span class="sale">
+          <?php
+            echo esc_html( $currency );
+            echo esc_html( $sale );
+            ?>
+        </span>
+        <?php endif; ?>
+      </div>
+      <!-- Give the id of the item to be added to cart -->
+      <a href="<?php echo esc_url( '?add-to-cart=' . $dealProductId ); ?>"
+        class="add-to-cart"><?php esc_html_e( 'Add to Cart', 'fancy-lab' ); ?></a>
+    </div>
+  </div>
+</div>
+</section>
+<!-- deal-of-the-week-end -->
+
+<?php endif; // end showing deal section ?>
+````

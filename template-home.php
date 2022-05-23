@@ -77,11 +77,12 @@ get_header(); ?>
           </h2>
         </div>
         <?php
-        // Static query to get popular products
-        // echo do_shortcode( '[products limit="4" columns="4" orderby="popularity"]' );
+          // Static query to get popular products
+          // echo do_shortcode( '[products limit="4" columns="4" orderby="popularity"]' );
 
-        // Dynamic query to get popular products
-        echo do_shortcode( '[products limit=" ' . esc_attr( $popular_limit ) . ' " columns=" ' . esc_attr( $popular_col ) . ' " orderby="popularity"]' ); ?>
+          // Dynamic query to get popular products
+          echo do_shortcode( '[products limit=" ' . esc_attr( $popular_limit ) . ' " columns=" ' . esc_attr( $popular_col ) . ' " orderby="popularity"]' );
+        ?>
       </div>
     </section>
     <!-- popular-products-end -->
@@ -105,16 +106,17 @@ get_header(); ?>
        * This option will be optional in customizer, the user can enable/disable it using checkbox
        * 0: by default this section is false/disabled
        */
-      $showdeal	= get_theme_mod( 'set_deal_show', 0 ); // status
-      $deal 		= get_theme_mod( 'set_deal' ); // product-id
-      $currency	= get_woocommerce_currency_symbol(); // woocom settings
+      $showDeal       = get_theme_mod( 'set_deal_show', 0 ); // status
+      $dealProductId  = get_theme_mod( 'set_deal' ); // product-id
+      $currency       = get_woocommerce_currency_symbol(); // woocom settings
       // get_post_meta(id, DB_field_name, isRenderedToScreen?)
-      $regular	= get_post_meta( $deal, '_regular_price', true );
-      $sale 		= get_post_meta( $deal, '_sale_price', true );
+      $regular	= get_post_meta( $dealProductId, '_regular_price', true );
+      $sale 		= get_post_meta( $dealProductId, '_sale_price', true );
 
-    if ( $showdeal == 1 && ( !empty( $deal ) ) ):
+    if ( $showDeal && ( !empty( $dealProductId ) ) ):
       // Simple equation to calculate discount percentage
-      $discount_percentage = absint( 100 - ( ( $sale / $regular ) * 100 ) );
+      $discount       = absint( 100 - ( ( $sale / $regular ) * 100 ) );
+      $discount_rate  = '%' . $discount;
     ?>
     <!-- Deal of the week -->
     <section class="deal-of-the-week">
@@ -127,9 +129,9 @@ get_header(); ?>
             <?php
             /**
              * Because we are outside the loop and we don't know the post-id, we use (echo get_the_post_thumbnail( $id, $img-size, $extras ))
-             * You have to choose a $deal or post-id in customizer to show the image
+             * You have to choose a $dealProductId or post-id in customizer to show the image
              */
-            echo get_the_post_thumbnail( $deal, 'large', array( 'class' => 'img-fluid' ) ); ?>
+            echo get_the_post_thumbnail( $dealProductId, 'large', array( 'class' => 'img-fluid' ) ); ?>
           </div>
           <div class="deal-desc col-md-4 col-12 mr-auto text-center">
 
@@ -137,14 +139,14 @@ get_header(); ?>
             // The condition is to ensuare that no 100% discount!
             if ( !empty( $sale ) ): ?>
             <span class="discount">
-              <?php echo esc_html( $discount_percentage ) . esc_html__( '% OFF', 'fancy-lab' ); ?>
+              <?php echo esc_html( $discount_rate ) . esc_html__( ' OFF', 'fancy-lab' ); ?>
             </span>
             <?php endif; ?>
             <h3>
               <a
-                href="<?php echo esc_url( get_permalink( $deal ) ); ?>"><?php echo esc_html( get_the_title( $deal ) ); ?></a>
+                href="<?php echo esc_url( get_permalink( $dealProductId ) ); ?>"><?php echo esc_html( get_the_title( $dealProductId ) ); ?></a>
             </h3>
-            <p><?php echo esc_html( get_the_excerpt( $deal ) ); ?></p>
+            <p><?php echo esc_html( get_the_excerpt( $dealProductId ) ); ?></p>
             <div class="prices">
               <span class="regular">
                 <?php
@@ -162,7 +164,7 @@ get_header(); ?>
               <?php endif; ?>
             </div>
             <!-- Give the id of the item to be added to cart -->
-            <a href="<?php echo esc_url( '?add-to-cart=' . $deal ); ?>"
+            <a href="<?php echo esc_url( '?add-to-cart=' . $dealProductId ); ?>"
               class="add-to-cart"><?php esc_html_e( 'Add to Cart', 'fancy-lab' ); ?></a>
           </div>
         </div>
@@ -197,7 +199,7 @@ get_header(); ?>
                 endif;
               ?>
             </a>
-            <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+            <h3 class="mt-3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
             <div class="excerpt"><?php the_excerpt(); ?></div>
           </article>
           <?php

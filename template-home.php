@@ -7,63 +7,62 @@ Template Name: Home Page
 get_header(); ?>
 
 <div class="content-area">
-  <?php
-    if ( current_user_can( 'administrator' ) ) { ?>
-  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-    <label for="numberOfBnousSessions">عدد الجلسات</label>
-    <select name="numberOfBonusSessions">
-      <option value="choose">--- عدد الجلسات الإضافية ---</option>
-      <?php
-        $args = [
-          'post_type'       => 'product',
-          'posts_per_page'  => -1
-        ];
+  <div class="bonus-sessions-form container">
+    <?php
+      if ( current_user_can( 'administrator' ) ) { ?>
+    <h2 class="text-center my-4">نموذج منح جلسات إضافية للعميل</h2>
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+      <select class="form-control" name="numberOfBonusSessions">
+        <option value="choose">--- عدد الجلسات الإضافية ---</option>
+        <?php
+          $args = [
+            'post_type'       => 'product',
+            'posts_per_page'  => -1
+          ];
 
-        $products = new WP_Query( $args );
+          $products = new WP_Query( $args );
 
-        while ( $products->have_posts() ) {
-          $products->the_post(); ?>
-      <option value="<?php the_ID(); ?>"><?php the_ID(); ?></option>
-      <?php }
-        wp_reset_postdata();
-      ?>
-    </select>
-    <label for="bonusSessionsNote">سبب منح العميل جلسات إضافية</label>
-    <textarea name="bonusSessionsNote" cols="30" rows="10">لماذا تريد اضافه جلسات</textarea><br>
-    <input name="bonusSessionsAction" type="submit" value="إضافه">
-    <p>قام بإضافة الجلسات إلى رصيد العميل المُحرّر <?php the_author(); ?></p>
-  </form>
-  <?php }
+          while ( $products->have_posts() ) {
+            $products->the_post(); ?>
+        <option value="<?php the_ID(); ?>"><?php the_ID(); ?></option>
+        <?php }
+          wp_reset_postdata();
+        ?>
+      </select>
+      <textarea class="form-control my-4" name="bonusSessionsNote" cols="30" rows="3"
+        placeholder=" ماهو سبب إضافة الجلسات للعميل؟"></textarea><br>
+      <input class="btn btn-primary mb-3" name="bonusSessionsAction" type="submit" value="إضافه">
+    </form>
+    <?php }
 
-  $bonus_sessions_note = $_POST['bonusSessionsNote'];
-  $bonus_sessions_action = $_POST['bonusSessionsAction'];
+    $bonus_sessions_note = $_POST['bonusSessionsNote'];
+    $bonus_sessions_action = $_POST['bonusSessionsAction'];
 
-  if ( isset( $bonus_sessions_action ) ) {
-    if ( ! empty( $number_of_bonus_sessions ) && ! empty( $bonus_sessions_note ) ) {
+    if ( isset( $bonus_sessions_action ) ) {
+      if ( ! empty( $number_of_bonus_sessions ) && ! empty( $bonus_sessions_note ) ) {
 
-    global $woocommerce;
+      global $woocommerce;
 
-    $product = filter_input( INPUT_POST, 'numberOfBonusSessions', FILTER_SANITIZE_STRING );
+      // Create the order
+      $order = wc_create_order();
 
-    // Create the order
-    $order = wc_create_order();
+      // Set customer id
+      $order->set_customer_id( apply_filters( 'woocommerce_checkout_customer_id', get_current_user_id() ) );
 
-    // Set customer id
-    $order->set_customer_id( apply_filters( 'woocommerce_checkout_customer_id', get_current_user_id() ) );
+      // Add product id
+      // $order->add_product( get_product( 50 ), 1 );
+      $order->add_product( get_product( 50 ), 1 );
 
-    // Add product id
-    // $order->add_product( get_product( 50 ), 1 );
-    $order->add_product( get_product( 50 ), 1 );
+      // Calculate totals
+      $order->calculate_totals();
 
-    // Attach notes with the order
-    $order->set_customer_note( isset( $bonus_sessions_note ) ? $bonus_sessions_note: '' );
+      // Attach notes with the order
+      $order->set_customer_note( isset( $bonus_sessions_note ) ? $bonus_sessions_note: '' );
 
-  }
-  }
-
-
-
+      }
+    }
   ?>
+  </div>
 
   <main>
     <section class="slider">
@@ -242,7 +241,7 @@ get_header(); ?>
         <div class="row">
           <?php
             $blog_posts = new WP_Query( array(
-              'post_type'				=> 'post', 
+              'post_type'				=> 'post',
               'posts_per_page'	=> 2
             ) );
 

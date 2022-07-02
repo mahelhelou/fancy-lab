@@ -32,15 +32,20 @@ This theme has been built while learning WooCommerce from a paid course in Udemy
 - `Show current template` By `JOTAKI Taisuke`
 - `Simply Show Hooks` By `Stuart O'Brien, cxThemes`
 
-
-"": [
-        {
-          "id": 2095,
-          "key": "pa_color",
-          "value": "black"
-        },
-        {
-          "id": 2096,
-          "key": "size",
-          "value": "M Test"
-        }
+```json
+{
+	"success": true,
+	"statusCode": 200,
+	"code": "jwt_auth_valid_credential",
+	"message": "بيانات الاعتماد صالحة",
+	"data": {
+		"token": "",
+		"id": 11,
+		"email": "ahmedtest2@gmail.com",
+		"nicename": "ahmed2",
+		"firstName": "",
+		"lastName": "",
+		"displayName": "ahmed2"
+	}
+}
+```

@@ -183,15 +183,16 @@ get_header(); ?>
         </div>
         <div class="row">
           <?php
-          $blog_posts = new WP_Query( array(
-            'post_type'				=> 'post',
-            'posts_per_page'	=> 2
-          ) );
+            $blog_posts = new WP_Query( array(
+              'post_type'				=> 'post', 
+              'posts_per_page'	=> 2
+            ) );
 
-          // If there are any posts
-          if ( $blog_posts->have_posts() ):
-            while( $blog_posts->have_posts() ): $blog_posts->the_post();
-          ?>
+            // If there are any posts
+            if ( $blog_posts->have_posts() ) {
+              while ( $blog_posts->have_posts ) {
+                $blog_posts->the_post(); ?>
+
           <article class="col-12 col-md-6">
             <a href="<?php the_permalink(); ?>">
               <?php if ( has_post_thumbnail() ):
@@ -202,12 +203,12 @@ get_header(); ?>
             <h3 class="mt-3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
             <div class="excerpt"><?php the_excerpt(); ?></div>
           </article>
-          <?php
-            endwhile;
-            wp_reset_postdata();
-          else: ?>
+          <?php }
+            } else { ?>
           <p><?php esc_html_e( 'Nothing to display.', 'fancy-lab' ); ?></p>
-          <?php endif; ?>
+          <?php }
+            wp_reset_postdata();
+          ?>
         </div>
       </div>
     </section>

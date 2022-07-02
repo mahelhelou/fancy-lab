@@ -7,6 +7,64 @@ Template Name: Home Page
 get_header(); ?>
 
 <div class="content-area">
+  <?php
+    if ( current_user_can( 'administrator' ) ) { ?>
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+    <label for="numberOfBnousSessions">عدد الجلسات</label>
+    <select name="numberOfBonusSessions">
+      <option value="choose">--- عدد الجلسات الإضافية ---</option>
+      <?php
+        $args = [
+          'post_type'       => 'product',
+          'posts_per_page'  => -1
+        ];
+
+        $products = new WP_Query( $args );
+
+        while ( $products->have_posts() ) {
+          $products->the_post(); ?>
+      <option value="<?php the_ID(); ?>"><?php the_ID(); ?></option>
+      <?php }
+        wp_reset_postdata();
+      ?>
+    </select>
+    <label for="bonusSessionsNote">سبب منح العميل جلسات إضافية</label>
+    <textarea name="bonusSessionsNote" cols="30" rows="10">لماذا تريد اضافه جلسات</textarea><br>
+    <input name="bonusSessionsAction" type="submit" value="إضافه">
+    <p>قام بإضافة الجلسات إلى رصيد العميل المُحرّر <?php the_author(); ?></p>
+  </form>
+  <?php }
+
+  $bonus_sessions_note = $_POST['bonusSessionsNote'];
+  $bonus_sessions_action = $_POST['bonusSessionsAction'];
+
+  if ( isset( $bonus_sessions_action ) ) {
+    if ( ! empty( $number_of_bonus_sessions ) && ! empty( $bonus_sessions_note ) ) {
+
+    global $woocommerce;
+
+    $product = filter_input( INPUT_POST, 'numberOfBonusSessions', FILTER_SANITIZE_STRING );
+
+    // Create the order
+    $order = wc_create_order();
+
+    // Set customer id
+    $order->set_customer_id( apply_filters( 'woocommerce_checkout_customer_id', get_current_user_id() ) );
+
+    // Add product id
+    // $order->add_product( get_product( 50 ), 1 );
+    $order->add_product( get_product( 50 ), 1 );
+
+    // Attach notes with the order
+    $order->set_customer_note( isset( $bonus_sessions_note ) ? $bonus_sessions_note: '' );
+
+  }
+  }
+
+
+
+  ?>
+
   <main>
     <section class="slider">
       <div class="flexslider">

@@ -16,6 +16,7 @@ get_header();
 ?>
 
 <div class="content-area">
+
   <main>
     <div class="container">
       <div class="row">

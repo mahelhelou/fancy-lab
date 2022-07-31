@@ -24,7 +24,7 @@ get_header(); ?>
 
           while ( $products->have_posts() ) {
             $products->the_post(); ?>
-        <option value="<?php the_ID(); ?>"><?php the_ID(); ?></option>
+        <option value="<?php the_title(); ?>"><?php the_title(); ?></option>
         <?php }
           wp_reset_postdata();
         ?>
@@ -35,6 +35,7 @@ get_header(); ?>
     </form>
     <?php }
 
+    $number_of_bonus_sessions = $_POST['numberOfBonusSessions'];
     $bonus_sessions_note = $_POST['bonusSessionsNote'];
     $bonus_sessions_action = $_POST['bonusSessionsAction'];
 

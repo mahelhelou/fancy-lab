@@ -17,10 +17,39 @@ get_header();
 
 <div class="content-area">
 
-  <main>
+  <!-- Live ajax posts filter -->
+  <div class="py-4">
     <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-8 col-lg-9">
+      <form class="live-posts-filter-form">
+        <?php
+        $categories = get_categories(array(
+          'hide_empty' => false,
+          'orderby' => 'name',
+          'order' => 'ASC',
+          'exclude' => array(1)
+        ));
+      ?>
+        <label for="live-posts-filter">Categories</label>
+        <select class="form-control" name="livePostsFilter" id="live-posts-filter">
+          <option value="*">All</option>
+          <?php
+          foreach ( $categories as $category ) { ?>
+          <option value=".<?php echo $category->slug; ?>"><?php echo $category->name; ?></option>
+          <?php } ?>
+        </select>
+      </form>
+    </div>
+  </div>
+
+  <main class="blog-posts">
+    <div class="container">
+      <div class="row grid">
+        <div class="col-12 col-md-8 col-lg-9 grid-item <?php
+              $categories = get_the_category( get_the_ID() );
+              foreach ( $categories as $category ) {
+                echo $category->slug . ' ';
+              }
+            ?>">
           <?php if ( have_posts() ):
 								while( have_posts() ): the_post();
 									get_template_part( 'template-parts/content' );

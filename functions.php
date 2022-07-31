@@ -11,4 +11,5 @@ require_once get_theme_file_path( '/inc/enqueue.php' );
 require_once get_theme_file_path( '/inc/features.php' );
 require_once get_theme_file_path( '/inc/sidebars.php' );
 require_once get_theme_file_path( '/inc/add-to-cart-ajax.php' );
+require_once get_theme_file_path( '/inc/live-posts-filter.php' );
 // require_once get_theme_file_path( '/inc/forgot-password.php' );

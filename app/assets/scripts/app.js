@@ -1,16 +1,25 @@
-$(function () {
-	// Filter items on select change
-	let $grid = $('.grid').isotope({
-		// select.search-list
-		itemSelector: '.grid-item',
-		layoutMode: 'fitRows'
+jQuery(function ($) {
+	$('#live-posts-filter').on('change', function () {
+		let filter = $(this).val()
+
+		if (filter === 'all') {
+			$('#live-posts-list .post').show(300)
+		} else {
+			$('#live-posts-list .post').hide(100)
+			$('#live-posts-list ' + filter).show(200)
+		}
 	})
 
-	// bind filter on select change
-	$('#live-posts-filter').on('change', function () {
-		// get filter value from option value
-		let filterValue = this.value
-		// use filterFn if matches value
-		$grid.isotope({ filter: filterValue })
+	$.ajax({
+		type: 'POST',
+		url: '/wp-admin/admin-ajax.php',
+		dataType: 'html',
+		data: {
+			action: 'filter_projects',
+			category: $(this).data('slug')
+		},
+		success: function (res) {
+			$('.project-tiles').html(res)
+		}
 	})
 })

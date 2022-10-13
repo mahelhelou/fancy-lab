@@ -7,64 +7,6 @@ Template Name: Home Page
 get_header(); ?>
 
 <div class="content-area">
-  <div class="bonus-sessions-form container">
-    <?php
-      if ( current_user_can( 'administrator' ) ) { ?>
-    <h2 class="text-center my-4">نموذج منح جلسات إضافية للعميل</h2>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-      <select class="form-control" name="numberOfBonusSessions">
-        <option value="choose">--- عدد الجلسات الإضافية ---</option>
-        <?php
-          $args = [
-            'post_type'       => 'product',
-            'posts_per_page'  => -1
-          ];
-
-          $products = new WP_Query( $args );
-
-          while ( $products->have_posts() ) {
-            $products->the_post(); ?>
-        <option value="<?php the_title(); ?>"><?php the_title(); ?></option>
-        <?php }
-          wp_reset_postdata();
-        ?>
-      </select>
-      <textarea class="form-control my-4" name="bonusSessionsNote" cols="30" rows="3"
-        placeholder=" ماهو سبب إضافة الجلسات للعميل؟"></textarea><br>
-      <input class="btn btn-primary mb-3" name="bonusSessionsAction" type="submit" value="إضافه">
-    </form>
-    <?php }
-
-    $number_of_bonus_sessions = $_POST['numberOfBonusSessions'];
-    $bonus_sessions_note = $_POST['bonusSessionsNote'];
-    $bonus_sessions_action = $_POST['bonusSessionsAction'];
-
-    if ( isset( $bonus_sessions_action ) ) {
-      if ( ! empty( $number_of_bonus_sessions ) && ! empty( $bonus_sessions_note ) ) {
-
-      global $woocommerce;
-
-      // Create the order
-      $order = wc_create_order();
-
-      // Set customer id
-      $order->set_customer_id( apply_filters( 'woocommerce_checkout_customer_id', get_current_user_id() ) );
-
-      // Add product id
-      // $order->add_product( get_product( 50 ), 1 );
-      $order->add_product( get_product( 50 ), 1 );
-
-      // Calculate totals
-      $order->calculate_totals();
-
-      // Attach notes with the order
-      $order->set_customer_note( isset( $bonus_sessions_note ) ? $bonus_sessions_note: '' );
-
-      }
-    }
-  ?>
-  </div>
-
   <main>
     <section class="slider">
       <div class="flexslider">

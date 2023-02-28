@@ -190,7 +190,7 @@ get_header(); ?>
 
             // If there are any posts
             if ( $blog_posts->have_posts() ) {
-              while ( $blog_posts->have_posts ) {
+              while ( $blog_posts->have_posts() ) {
                 $blog_posts->the_post(); ?>
 
           <article class="col-12 col-md-6">

@@ -1,0 +1,30 @@
+= '\n'
+// Scripts
+//- Libs
+script(src="https://unpkg.com/swiper@8/swiper-bundle.min.js")
+='\n'
+script(src=require('../../scripts/App.js'))
+='\n'
+script.
+	// Get the current page name
+	let currentPage = window.location.pathname.split('/').pop()
+
+	// Function to update the language switcher link
+	function updateLanguageSwitcher() {
+		// Generate the language switcher link
+		let link
+		if (currentPage.endsWith('-rtl.html')) {
+			currentPage = currentPage.replace('-rtl.html', '')
+			link = currentPage + '.html'
+		} else if (currentPage.endsWith('.html')) {
+			currentPage = currentPage.replace('.html', '')
+			link = currentPage + '-rtl.html'
+		} else {
+			link = 'index-rtl.html'
+		}
+
+		// Update the language switcher link in the navbar
+		document.getElementById('language-switcher').href = link
+	}
+
+	updateLanguageSwitcher();

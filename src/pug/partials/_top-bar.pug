@@ -1,0 +1,27 @@
+= '\n'
+// Accessibility
+div(class='bg-white p-3 overflow-x-scroll flex space-s-8 justify-center items-center transition-colors duration-500 dark:bg-deepBlack')
+	div(class='inline-flex space-s-4 items-center')
+		= '\n'
+		span.font-bold= direction === 'ltr' ? 'Dark Mode' : 'الوضع الداكن'
+		= '\n'
+		button(class='toggler' id='dark-mode-toggler' aria-label= direction === 'ltr' ? 'Dark Mode' : 'الوضع الداكن')
+		= '\n'
+	div(class='magnifier inline-flex items-center space-s-4')
+		= '\n'
+		span.font-bold= direction === 'ltr' ? 'Zoom' : 'تكبير'
+		= '\n'
+		i(class='fas fa-search-plus text-[22px] text-gray-500 cursor-pointer dark:text-gray-200')
+		= '\n'
+		i(class='fas fa-search-minus text-[22px] text-gray-500 cursor-pointer dark:text-gray-200')
+		= '\n'
+
+	//- button#dark-mode-toggler(class="transition-colors duration-500")
+	//- 	= '\n'
+	//- 	i#dark-mode-toggler-moon-icon.fas.fa-moon.hidden
+	//- 	= '\n'
+	//- 	i#light-mode-toggler-sun-icon.fas.fa-sun.hidden
+	//- 	= '\n'
+	//- = '\n'
+= '\n'
+// /Accessibility

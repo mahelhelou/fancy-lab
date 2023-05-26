@@ -1,0 +1,20 @@
+//- Mixins
+include ../mixins/_mixin-section
+
+// Partners
++section({
+	id: 'partners',
+	class: '',
+	titleClass: 'section-title',
+	title: direction === 'ltr' ? 'Our Partners' : 'شركاؤنا'
+})
+
+	.swiper
+		.swiper-wrapper.items-center
+			each partner in partners
+				.swiper-slide
+					= '\n'
+					a(class='block h-20 w-full' href="#")
+						= '\n'
+						img(class='h-full m-auto' src=require(`../../images/logos/${partner.name}-logo.${partner.ext}`) alt=`${partner.name} logo`)
+						= '\n'

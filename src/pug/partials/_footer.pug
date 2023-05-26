@@ -1,0 +1,47 @@
+// Scroll to top
+= '\n'
+button#back-to-top-btn(class="hidden transition-opacity duration-200 cursor-pointer w-8 h-8 rounded-full bg-iugBlue fixed bottom-12 end-6 z-[55]")
+	= '\n'
+	span(class="block m-auto fas fa-angle-up text-white text-lg" href="javascript:void()")
+= '\n'
+// /Scroll to top
+
+='\n'
+// Footer
+footer(class="py-8 bg-gray-100 dark:bg-jetBlack transition-colors duration-500")
+	.container
+		div(class="grid grid-cols-1 gap-6 justify-center md:grid-cols-4")
+			div(class="flex flex-col")
+				h3(class="mb-3 text-xl font-bold")= direction === 'ltr' ? 'Disabled Voices From Gaza' : 'صوت ذوي الإعاقة'
+				p= direction === 'ltr' ? 'Disabled Voices From Gaza is a project that enhances the power of youth with disability to make a change in their lives.' : 'صوت ذوي الإعاقة هو مشروع يعمل على تمكين الشباب وخريجي الجامعات من ذوي الإعاقة ودمجهم في المجتمع.'
+
+			div
+				h3(class="mb-3 text-xl font-bold")= direction === 'ltr' ? 'Latest Posts' : 'أحدث المقالات'
+				div(class="grid grid-cols-3 gap-2")
+					- for (var i = 0; i < 9; i++)
+							= '\n'
+							a(href= singlePostLink)
+								div(class="w-full h-10")
+									= '\n'
+									img(class="w-full h-full object-cover" src=`https://unsplash.it/g/100.webp/?blur=4&rando=${i}`)
+			|
+			|
+			div(class="flex md:justify-center")
+				div
+					h3(class="mb-3 text-xl font-bold")= direction === 'ltr' ? 'Links' : 'روابط'
+					div(class="grid grid-cols-3 gap-3")
+						- let links = direction === 'ltr' ? ['Home', 'About', 'Albums', 'Studies', 'Blog', 'Contact'] : ['الرئيسية', 'من نحن', 'صور', 'دراسات', 'المدونة', 'تواصل معنا']
+
+						each i in links
+							= '\n'
+							a(href=`${i.toLowerCase()}.html`)= i
+			|
+			|
+			div(class="flex md:justify-center")
+				div
+					h3(class="mb-3 text-xl font-bold")= direction === 'ltr' ? 'Follow Us' : 'تابعونا'
+					div(class="flex space-s-5")
+						each sm in smIcons
+							= '\n'
+							a(class=`text-${sm.color} ${sm.icon} text-xl hover:opacity-80 transition-opacity duration-500 dark:text-white` href= sm.link target="_blank" aria-label= sm.platform)
+// /Footer

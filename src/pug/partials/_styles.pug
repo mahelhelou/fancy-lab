@@ -1,0 +1,25 @@
+='\n'
+// Styles
+// Custom fonts
+link(rel="preconnect" href="https://fonts.googleapis.com")
+link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+if direction === 'ltr'
+	link(href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet")
+else if direction === 'rtl'
+	= '\n'
+	link(href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet")
+= '\n'
+// Libs
+= '\n'
+link(rel="stylesheet", href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
+link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css")
+= '\n'
+// Custom style
+link(href=require('../../styles/input.css') rel="stylesheet")
+
+='\n'
+// Dark mode preference checker
+script.
+	if (localStorage.getItem('color-theme') === 'dark') {
+		document.documentElement.classList.add('dark')
+	}

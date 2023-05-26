@@ -1,0 +1,111 @@
+// Navbar
+nav(class="sticky top-0 shadow-lg bg-white dark:bg-deepBlack z-[100] transition-colors duration-500")
+	.container
+		div(class="relative flex items-center justify-between")
+			//- Logo
+			= '\n'
+			a#logo(class="inline-block h-16 transition-all duration-400" href= direction === 'ltr' ? 'index.html' : 'index-rtl.html')
+				= '\n'
+				img(class="h-full" src=require('../../images/logos/project-logo.png'))
+
+			div(class='hidden lg:flex')
+				.flex
+					each page in pages
+						if page.children.length > 0
+							= '\n'
+							div(class="group relative")
+								= '\n'
+								a.nav-link(class= page.activePage.includes(activePage) ? ' active': '' href= direction === 'ltr' ? page.link : page.link.replace('.html', '-rtl.html'))= page.name
+									span(class="fas fa-angle-down px-[6px]")
+								= '\n'
+								.nav-link--dropdown
+									each child in page.children
+										= '\n'
+										a.nav-link--dropdown-item(href= direction === 'ltr' ? child.link : child.link.replace('.html', '-rtl.html'))= child.name
+						else
+							= '\n'
+							a.nav-link(class= page.activePage.includes(activePage) ? ' active': '' href= direction === 'ltr' ? page.link : page.link.replace('.html', '-rtl.html'))= page.name
+					|
+
+			= '\n'
+			// Language switcher
+			= '\n'
+			a#language-switcher(href='')= direction === 'ltr' ? 'ع' : 'En'
+
+
+
+			= '\n'
+			// Actions
+			div(class="hidden space-s-5 items-center lg:flex")
+				= '\n'
+				// SM icons
+				each sm in smIcons
+					= '\n'
+					a(class= `${sm.icon} text-${sm.color} text-lg hover:opacity-75 duration-500 transition-opacity dark:text-white` href= sm.link target="_blank" aria-label= direction === 'ltr' ? sm.platform : sm.rtlPlatform)
+				= '\n'
+				// /SM icons
+
+				= '\n'
+				i#search-btn(class="fas fa-search cursor-pointer text-gray-400" aria-label= direction === 'ltr' ? 'Search' : 'البحث في الموقع')
+
+				= '\n'
+				//- // Dark mode Button
+				= '\n'
+				//- button#dark-mode-toggler(class="text-gray-400 text-md hover:bg-gray-100 transition-colors duration-500 dark:text-gray-300 dark:hover:bg-gray-700 focus:outline-none")
+				//- 	= '\n'
+				//- 	i#dark-mode-toggler-moon-icon.fas.fa-moon.hidden
+				//- 	= '\n'
+				//- 	i#light-mode-toggler-sun-icon.fas.fa-sun.hidden
+				//- = '\n'
+				//- // /Dark mode button
+			= '\n'
+			// /Actions
+
+			|
+			|
+			// Hamburger button
+			= '\n'
+			button#menu-btn(class='block hamburger lg:hidden focus:outline-none' type='button')
+				= '\n'
+				span.hamburger-top
+				= '\n'
+				span.hamburger-middle
+				= '\n'
+				span.hamburger-bottom
+			= '\n'
+			// /Hamburger button
+
+	= '\n'
+	// Mobile menu
+	#menu(class='absolute flex-col hidden w-full left-0 z-100 bg-gray-100 dark:bg-jetBlack')
+		div(class='w-full px-6 py-4 flex flex-col')
+			each page in pages
+				if page.children.length
+					div(class='mobile-menu-dropdown-parent w-1/2 mx-auto py-3' data-dropdown-id= page.id)
+						div(class='flex items-center')
+							= '\n'
+							a(class='me-4 font-bold' href= page.link)= page.name
+							= '\n'
+							i(class='mobile-menu-dropdown-toggler fas fa-angle-down text-lg' aria-label= direction === 'ltr' ? 'Toggle dropdown menu' : 'اعرض القائمة المنسدلة')
+
+						div(class='mobile-menu-dropdown hidden flex-col duration-all ease-in-out')
+							each child in page.children
+								= '\n'
+								a(href= child.link class='py-3 ps-2 font-bold text-sm')= child.name
+				else
+					= '\n'
+					a(href= page.link class='w-1/2 mx-auto py-3 font-bold')= page.name
+
+		= '\n'
+		// SM icons
+		div(class='my-4 flex space-s-4 justify-center')
+			each sm in smIcons
+				= '\n'
+				a(class= `${sm.icon} text-${sm.color} text-lg hover:opacity-75 duration-500 transition-opacity dark:text-white` href= sm.link target="_blank" aria-label= direction === 'ltr' ? sm.platform : sm.rtlPlatform)
+			= '\n'
+		// /SM icons
+
+	= '\n'
+	// /Mobile menu
+='\n'
+// /Navbar

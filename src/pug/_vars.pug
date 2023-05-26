@@ -1,0 +1,207 @@
+//-
+	- Meta/Header vars
+		- siteLang
+		- siteDescription
+		- titleSuffix
+		- author
+	- Body and general vars
+		- fontFamily
+	- Post vars
+		- singlePostTitle
+		- singlePostExcerpt
+		- postDate
+		- singlePostLink
+		- categoryLink
+		- readMoreBtn
+	- Functions
+		- truncateText
+	- Arrays
+		- smIcons
+		- pages
+		- partners
+
+//- Meta/Header vars
+- let siteLang = direction === 'ltr' ? 'en' : 'ar'
+- let siteDescription = direction === 'ltr' ? 'Fancy Lab is a professional WooCommerce template.' : 'فانسي لاب هو قالب ووكوميرس احترافي.'
+- let titleSuffix = direction === 'ltr' ? ' | Fancy Lab' : ' | فانسي لاب'
+- let author = 'Mahmoud Elhelou'
+
+//- Body and general vars
+- let fontFamily = direction === 'ltr' ? 'font-sans' : 'font-tajawal'
+
+//- Post vars
+- let singlePostTitle = direction === 'ltr' ? '7 Tips to Choose Your Next Startup Launching Outfits' : '7 نصائح لاختيار ملابسك عند إطلاق مشروعك القادم'
+- let postDate = direction === 'ltr' ? 'May 4، 2022' : '4 مايو, 2022'
+- let singlePostLink = direction === 'ltr' ? 'single-post.html' : 'single-post-rtl.html'
+- let categoryLink = direction === 'ltr' ? 'category.html' : 'category-rtl.html'
+- let readMoreBtn = direction === 'ltr' ? 'Read More' : 'اقرأ المزيد'
+
+- let singlePostExcerpt = direction === 'ltr' ? 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nobis explicabo nihil assumenda in eos qui, alias similique deleniti repudiandae laboriosam veniam nemo placeat est, ab officiis minima dolores. Perspiciatis iste voluptatum deleniti at eius rem, perferendis maiores, aut reprehenderit nesciunt similique vero quo reiciendis tempore, dolorem porro! Vel doloribus optio corporis nostrum laboriosam earum voluptatum odio quo provident ex itaque consequatur omnis dolores quas, quod repellat nesciunt voluptas voluptatem deserunt minus. Repellendus sit iure commodi, amet sed necessitatibus ullam? Repellat quam sequi, adipisci beatae temporibus repudiandae alias! Est provident iure officiis, aliquid aut modi dolore animi maxime assumenda odit beatae. Cupiditate hic rerum aut magnam!' : 'لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.'
+
+//- Functions
+- function truncateText(text, numWords) {
+	- let words = text.split(' ')
+
+	- return words.splice(0, numWords).join(' ')
+- }
+
+//- Arrays
+-
+	let smIcons = [
+		{
+			platform: 'Facebook',
+			icon: 'fab fa-facebook-f',
+			link: 'https://www.facebook.com/profile.php?id=100088883769999',
+			color: 'fbColor'
+		},
+		{
+			platform: 'Twitter',
+			icon: 'fab fa-twitter',
+			link: 'https://twitter.com/DisabledvoicesG',
+			color: 'twitterColor'
+		},
+		{
+			platform: 'Instagram',
+			icon: 'fab fa-instagram',
+			link: 'https://instagram.com/disabledvoicesgaza',
+			color: 'instaColor'
+		},
+		{
+			platform: 'YouTube',
+			icon: 'fab fa-youtube',
+			link: 'https://www.youtube.com/@disabledvoicesfromgaza',
+			color: 'youtubeColor'
+		}
+	]
+
+-
+	let pages = [
+		{
+			name: direction === 'ltr' ? 'Home' : 'الرئيسية',
+			activePage: ['home'],
+			link: 'index.html',
+			children: []
+		},
+		{
+			name: direction === 'ltr' ? 'About': 'من نحن',
+			activePage: ['about', 'vision', 'mission'],
+			link: 'about.html',
+			children: [
+				{
+					name: direction === 'ltr' ? 'Vision' : 'رؤيتنا',
+					link: 'vision.html'
+				},
+				{
+					name: direction === 'ltr' ? 'Mission': 'رسالتنا',
+					link: 'mission.html'
+				},
+				{
+					name: direction === 'ltr' ? 'Team': 'فريق العمل',
+					link: 'team.html'
+				}
+			]
+		},
+		{
+			name: direction === 'ltr' ? 'Media': 'ميديا',
+			activePage: ['media', 'news', 'videos', 'courses'],
+			link: 'media.html',
+			children: [
+				{
+					name: direction === 'ltr' ? 'Gallery': 'الألبومات',
+					link: 'gallery.html'
+				},
+				{
+					name: direction === 'ltr' ? 'Videos' : 'فيديو',
+					link: 'videos.html'
+				},
+				{
+					name: direction === 'ltr' ? 'Courses' : 'الدورات التدريبية',
+					link: 'courses.html'
+				}
+			]
+		},
+		{
+			name: direction === 'ltr' ? 'Studies' : 'دراسات',
+			activePage: ['studies'],
+			link: 'studies.html',
+			children: []
+		},
+		{
+			name: direction === 'ltr' ? 'Blog' : 'المدونة',
+			activePage: ['blog'],
+			link: 'blog.html',
+			children: []
+		},
+		{
+			name: direction === 'ltr' ? 'Announcements' : 'الإعلانات',
+			activePage: ['announcements'],
+			link: 'announcements.html',
+			children: []
+		},
+		{
+			name: direction === 'ltr' ? 'Contact' : 'تواصل معنا',
+			activePage: ['contact'],
+			link: 'contact.html',
+			children: []
+		},
+	]
+
+-
+	let partners = [
+		{
+			name: 'aoav',
+			ext: 'jpg'
+		},
+		{
+			name: 'birmingham',
+			ext: 'png'
+		},
+		{
+			name: 'donor',
+			ext: 'png'
+		},
+		{
+			name: 'project',
+			ext: 'png'
+		},
+		{
+			name: 'ukri',
+			ext: 'png'
+		},
+	]
+
+-
+	let formFields = [
+		{
+			name: 'name',
+			id: 'name',
+			label: direction === 'ltr' ? 'Name' : 'الاسم',
+			type: 'text',
+			placeholder: direction === 'ltr' ? 'Aml Abdo' : 'أمل عبدو',
+			required: true
+		},
+		{
+			name: 'email',
+			id: 'email',
+			label: direction === 'ltr' ? 'Email' : 'البريد الإلكتروني',
+			type: 'email',
+			placeholder: 'amal@abdo.com',
+			required: true
+		},
+		{
+			name: 'subject',
+			id: 'subject',
+			label: direction === 'ltr' ? 'Subject' : 'موضوع الرسالة',
+			type: 'text',
+			placeholder: direction === 'ltr' ? 'Subject' : 'موضوع الرسالة',
+			required: true
+		},
+		{
+			name: 'message',
+			id: 'message',
+			label: direction === 'ltr' ? 'Your message' : 'رسالتك',
+			type: 'textarea',
+			placeholder: direction === 'ltr' ? 'Write your message here' : 'اكتب رسالتك هنا',
+			required: true
+		}
+	]

@@ -1,4 +1,6 @@
-# Numerous always-ignore extensions
+node_modules/
+.vscode
+
 *.diff
 *.err
 *.orig
@@ -9,9 +11,7 @@
 *.vi
 *~
 *.sass-cache
-node_modules/
 .tmp/
-.vscode
 
 # OS or Editor folders
 .DS_Store

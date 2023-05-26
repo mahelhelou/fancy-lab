@@ -1,0 +1,52 @@
+// Sidebar
+div(class="col-span-4 px-5 pt-8 bg-gray-200 dark:bg-jetBlack transition-colors duration-500")
+	// Search
+	.mb-8
+		form(method="GET" action= direction === 'ltr' ? 'search.html' : 'search-rtl.html')
+			= '\n'
+			input(class="w-full border border-deepOrange dark:text-gray-800" type="text" name="s" placeholder= direction === 'ltr' ? 'Search' : 'ابحث هنا' required)
+			= '\n'
+			button(type="submit" class="mt-3 px-4 py-2 bg-deepOrange text-white")= direction === 'ltr' ? 'Search' : 'ابحث'
+	// Announcements
+	.mb-4
+		h3(class="mb-4 text-lg font-bold")= direction === 'ltr' ? 'Announcements' : 'الإعلانات'
+		- for (let i = 0; i < 5; i++)
+			- let imgWidth = 180
+			- let imgHeight = 200
+
+			//- UT
+			if i == 0
+				- imgWidth = 15
+				//- - sidebarPostTitle = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae iste deleniti rerum, quos reprehenderit iusto. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae iste deleniti rerum, quos reprehenderit iusto.'
+
+			.mb-6
+				div(class="flex flex-col space-y-4 md:flex-row md:space-s-4 md:space-y-0")
+					= '\n'
+					a(href= singlePostLink)
+						div(class="w-full h-40 md:w-40 md:h-20")
+							= '\n'
+							img(class="w-full h-full object-cover rounded-md" src=`https://unsplash.it/${imgWidth}/${imgHeight}/?blur=4&random=${i}`)
+					div
+						= '\n'
+						a(href= singlePostLink)
+							h4(class="text-xs leading-5")= truncateText(singlePostTitle, 4)
+						= '\n'
+						span.block.mt-3.text-sm(class="text-[12px]")
+							= '\n'
+							i(class="far fa-clock me-2")
+							= postDate
+	|
+	|
+	// Categories
+	h3(class="mb-4 text-lg font-bold")= direction === 'ltr' ? 'Categories' : 'التصنيفات'
+	.flex.flex-col.space-y-3
+		- let sidebarCategories = direction === 'ltr' ? ['Activities', 'Social', 'Videos', 'Training', 'Networking'] : ['أنشطة', 'اجتماعيات', 'فيديو', 'تدريب', 'تشبيك']
+
+		each category in sidebarCategories
+			div(class="flex justify-between text-small")
+				= '\n'
+				a(href= categoryLink, class="duration-300 hover:opacity-70")= category
+				= '\n'
+				span= `(${(Math.round(Math.random() * 20))})`
+
+// /Sidebar
